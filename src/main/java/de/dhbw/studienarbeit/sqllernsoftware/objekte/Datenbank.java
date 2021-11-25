@@ -10,6 +10,13 @@ public class Datenbank extends ObjectWithId {
 		this.name = name;
 		this.createSql = createSql;
 	}
-	
-	
+/*-------------------------------------------------------------------------*/
+
+	public String getName() {
+		return name;
+	}
+
+	public String getCreateSql() {
+		return createSql;
+	}
 }
