@@ -12,12 +12,12 @@ public class LektionEntityManager implements EntityManager<Lektion> {
 	private HashMap<Long,Lektion> search = new HashMap<Long,Lektion>();
 	
 	@Override
-	public Optional<Lektion> get(long id) {
+	public Optional<Lektion> get(Long id) {
 		return Optional.of(search.get(id));
 	}
 
 	@Override
-	public void delete(long id) {
+	public void delete(Long id) {
 		
 	}
 
@@ -27,7 +27,7 @@ public class LektionEntityManager implements EntityManager<Lektion> {
 	}
 
 	@Override
-	public void update(long id, Object[] params) {
+	public void update(Long id, Object[] params) {
 		// TODO Auto-generated method stub
 		
 	}
