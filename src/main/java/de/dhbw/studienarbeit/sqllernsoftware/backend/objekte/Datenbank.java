@@ -1,4 +1,4 @@
-package de.dhbw.studienarbeit.sqllernsoftware.objekte;
+package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 
 public class Datenbank extends ObjectWithId {
 
