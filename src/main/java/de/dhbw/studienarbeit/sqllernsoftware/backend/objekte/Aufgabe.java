@@ -12,7 +12,7 @@ public class Aufgabe extends ObjectWithId{
 	private int Schwierigkeit; //einfahc ne Zahl von 1-10
 
 
-	public Aufgabe(String id, String titel, String aufgabentext, String musterloesung, String pruefungsbefehl,
+	public Aufgabe(long id, String titel, String aufgabentext, String musterloesung, String pruefungsbefehl,
 			Aufgabentyp typ, int schwierigkeit) {
 		super(id);
 		this.titel = titel;

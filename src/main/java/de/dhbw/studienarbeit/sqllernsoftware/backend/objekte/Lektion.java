@@ -10,7 +10,7 @@ public class Lektion extends ObjectWithId {
 	private ArrayList<LektionsInhalt> inhalte = new ArrayList<LektionsInhalt>();
 	
 	
-	public Lektion(String id, String titel, String beschreibung) {
+	public Lektion(long id, String titel, String beschreibung) {
 		super(id);
 		this.titel = titel;
 		this.beschreibung = beschreibung;

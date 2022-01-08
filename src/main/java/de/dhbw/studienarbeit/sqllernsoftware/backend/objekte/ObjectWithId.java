@@ -1,13 +1,13 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
-
+@Embedabble
 public abstract class ObjectWithId {
 
-	private String id;
+	private long id;
 	
-	public ObjectWithId(String id) {
+	public ObjectWithId(long id) {
 		this.id = id;
 	}
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 }

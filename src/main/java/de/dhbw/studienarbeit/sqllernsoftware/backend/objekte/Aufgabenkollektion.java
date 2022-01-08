@@ -11,7 +11,7 @@ public class Aufgabenkollektion extends ObjectWithId{
 
 	private ArrayList<Aufgabe> aufgabenliste = new ArrayList<Aufgabe>(); //key = reihenfolge
 
-	public Aufgabenkollektion(String id, String titel, String beschreibung, Datenbank datenbank) {
+	public Aufgabenkollektion(long id, String titel, String beschreibung, Datenbank datenbank) {
 		super(id);
 		this.titel = titel;
 		this.beschreibung = beschreibung;

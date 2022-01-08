@@ -6,7 +6,7 @@ public class LektionsInhaltAufgabe extends LektionsInhalt {
 
 	private Aufgabenkollektion aufgabenkollektion;
 	
-	public LektionsInhaltAufgabe(String id) {
+	public LektionsInhaltAufgabe(long id) {
 		super(id,Inhaltstyp.B);	
 	}
 

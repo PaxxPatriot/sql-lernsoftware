@@ -5,7 +5,7 @@ import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Inhaltstyp;
 public class LektionsInhaltText extends LektionsInhalt {
 	String text;
 	
-	public LektionsInhaltText(String id) {
+	public LektionsInhaltText(long id) {
 		super(id,Inhaltstyp.B);	
 	}
 
