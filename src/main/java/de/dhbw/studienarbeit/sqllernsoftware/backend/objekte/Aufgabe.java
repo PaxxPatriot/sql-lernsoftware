@@ -37,6 +37,10 @@ public class Aufgabe extends ObjectWithId {
 		this.aufgabenkollektion = aufgabenkollektion;
 	}
 
+	public Aufgabe() {
+		super(null);
+	}
+
 	/*---------------------------------------------------------------------------------------------------*/
 
 	public String getTitel() {
@@ -60,6 +64,6 @@ public class Aufgabe extends ObjectWithId {
 	}
 
 	public int getSchwierigkeit() {
-		return Schwierigkeit;
+		return schwierigkeit;
 	}
 }

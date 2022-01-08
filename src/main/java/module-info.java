@@ -8,6 +8,6 @@ module de.dhbw.studienarbeit.sqllernsoftware {
 
 
     opens de.dhbw.studienarbeit.sqllernsoftware to javafx.fxml;
-    opens de.dhbw.studienarbeit.sqllernsoftware.objekte;
+    opens de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
     exports de.dhbw.studienarbeit.sqllernsoftware;
 }
