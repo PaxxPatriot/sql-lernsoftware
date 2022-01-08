@@ -1,6 +1,6 @@
-package main.java.de.dhbw.studienarbeit.sqllernsoftware.backend.enums;
+package de.dhbw.studienarbeit.sqllernsoftware.backend.enums;
 
-import main.java.de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.*;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.*;
 
 
 public enum ClassType {

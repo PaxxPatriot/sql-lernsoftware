@@ -1,4 +1,4 @@
-package main.java.de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
+package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 
 import java.util.ArrayList;
 import java.util.List;

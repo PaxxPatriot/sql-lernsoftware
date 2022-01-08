@@ -1,10 +1,12 @@
-package main.java.de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
+package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.*;
+
+import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 
 @Entity
 @Table(name = "aufgabenkollektion")
