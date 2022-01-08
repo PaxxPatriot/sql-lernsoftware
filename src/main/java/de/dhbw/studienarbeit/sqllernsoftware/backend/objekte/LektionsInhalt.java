@@ -1,6 +1,6 @@
-package de.dhbw.studienarbeit.sqllernsoftware.objekte;
+package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 
-import de.dhbw.studienarbeit.sqllernsoftware.enums.Inhaltstyp;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Inhaltstyp;
 
 public abstract class LektionsInhalt extends ObjectWithId {
 

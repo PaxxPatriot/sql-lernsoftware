@@ -1,4 +1,4 @@
-package de.dhbw.studienarbeit.sqllernsoftware.enums;
+package de.dhbw.studienarbeit.sqllernsoftware.backend.enums;
 
 public enum Aufgabentyp {
 	A("SELECT-Befehl"),

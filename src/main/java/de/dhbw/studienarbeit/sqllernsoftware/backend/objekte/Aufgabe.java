@@ -1,6 +1,6 @@
-package de.dhbw.studienarbeit.sqllernsoftware.objekte;
+package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 
-import de.dhbw.studienarbeit.sqllernsoftware.enums.Aufgabentyp;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Aufgabentyp;
 
 public class Aufgabe extends ObjectWithId{
 
