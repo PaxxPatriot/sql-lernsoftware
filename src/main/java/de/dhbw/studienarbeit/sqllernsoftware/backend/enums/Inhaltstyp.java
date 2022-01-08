@@ -1,8 +1,8 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.enums;
 
 public enum Inhaltstyp {
-	A("TEXT"),
-	B("AUFGABE");
+	A("Text"),
+	B("Wissensfrage");
 //usw
 	private String anzeigeName;
 		

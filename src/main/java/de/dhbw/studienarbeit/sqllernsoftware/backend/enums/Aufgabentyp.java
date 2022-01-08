@@ -2,7 +2,7 @@ package de.dhbw.studienarbeit.sqllernsoftware.backend.enums;
 
 public enum Aufgabentyp {
 	A("SELECT-Befehl"),
-	B("DELETE-Befel");
+	B("DELETE-Befehl");
 //usw
 	private String anzeigeName;
 		

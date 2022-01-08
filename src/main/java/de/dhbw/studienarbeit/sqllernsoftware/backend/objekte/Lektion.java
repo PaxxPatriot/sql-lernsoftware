@@ -1,12 +1,16 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 
 import java.util.ArrayList;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "lektion")
 public class Lektion extends ObjectWithId {
-
+	@Column(name = "titel")
 	private String titel;
+	@Column(name = "bechreibung")
 	private String beschreibung;
-	
+	@OneToMany(mappedBy = "lektion")
 	private ArrayList<LektionsInhalt> inhalte = new ArrayList<LektionsInhalt>();
 	
 	
@@ -18,18 +22,6 @@ public class Lektion extends ObjectWithId {
 /*-------------------------------------------------------------------------*/
 	public LektionsInhalt getInhalt(int key) {
 		return inhalte.get(key);
-	}
-	
-	public void addInhalt(LektionsInhalt i, int key) {
-		if(key > inhalte.size()+1) {
-			inhalte.add(i);
-		}
-		else {
-			inhalte.add(key, i);
-		}		
-	}
-	public void deleteInhalt(int key) {
-		inhalte.remove(key);
 	}
 /*-------------------------------------------------------------------------*/
 	
