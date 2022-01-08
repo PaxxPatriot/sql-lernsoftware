@@ -1,4 +1,4 @@
-package de.dhbw.studienarbeit.sqllernsoftware.backend.manager;
+package main.java.de.dhbw.studienarbeit.sqllernsoftware.backend.manager;
 
 import java.util.List;
 import java.util.Optional;

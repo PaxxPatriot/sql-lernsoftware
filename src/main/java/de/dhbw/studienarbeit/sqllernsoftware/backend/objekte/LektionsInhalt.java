@@ -1,7 +1,7 @@
-package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
+package main.java.de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 
 import javax.persistence.*;
-import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Inhaltstyp;
+import main.java.de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Inhaltstyp;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)

@@ -1,6 +1,6 @@
-package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
+package main.java.de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 
-import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Aufgabentyp;
+import main.java.de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Aufgabentyp;
 import javax.persistence.*;
 
 @Entity
