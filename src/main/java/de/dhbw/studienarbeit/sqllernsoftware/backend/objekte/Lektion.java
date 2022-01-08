@@ -1,6 +1,7 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -8,16 +9,20 @@ import javax.persistence.*;
 public class Lektion extends ObjectWithId {
 	@Column(name = "titel")
 	private String titel;
-	@Column(name = "bechreibung")
+	@Column(name = "beschreibung")
 	private String beschreibung;
 	@OneToMany(mappedBy = "lektion")
-	private ArrayList<LektionsInhalt> inhalte = new ArrayList<LektionsInhalt>();
+	private List<LektionsInhalt> inhalte;
 	
 	
 	public Lektion(long id, String titel, String beschreibung) {
 		super(id);
 		this.titel = titel;
 		this.beschreibung = beschreibung;
+	}
+
+	public Lektion() {
+		super(null);
 	}
 /*-------------------------------------------------------------------------*/
 	public LektionsInhalt getInhalt(int key) {
