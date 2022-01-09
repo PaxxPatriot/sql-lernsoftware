@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
+import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Inhaltstyp;
+
 @Entity
 @Table(name = "lektion")
 public class Lektion extends ObjectWithId {
@@ -35,6 +37,18 @@ public class Lektion extends ObjectWithId {
 	}
 	public String getBeschreibung() {
 		return beschreibung;
+	}
+	public List<LektionsInhalt> getInhalte(){
+		return inhalte;	
+	}
+	public List<LektionsInhalt> getInhaltePerType(Inhaltstyp i){
+		List<LektionsInhalt> tmp = null;
+		for(LektionsInhalt inhalt: inhalte) {
+			if(inhalt.getTyp() == i) {
+				tmp.add(inhalt);
+			}		
+		}
+		return tmp;	
 	}
 	
 }

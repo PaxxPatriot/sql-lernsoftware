@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Aufgabentyp;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 
 @Entity
@@ -57,7 +58,15 @@ public class Aufgabenkollektion extends ObjectWithId {
 	public List<Aufgabe> getAufgabenliste() {
 		return aufgabenliste;
 	}
-
+	public List<Aufgabe> getAufgabenPerType(Aufgabentyp a){
+		List<Aufgabe> tmp = null;
+		for(Aufgabe aufgabe: aufgabenliste) {
+			if(aufgabe.getTyp() == a) {
+				tmp.add(aufgabe);
+			}		
+		}
+		return tmp;	
+	}
 	public String getTitel() {
 		return titel;
 	}

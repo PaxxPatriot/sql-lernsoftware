@@ -16,4 +16,7 @@ public abstract class ObjectWithId {
 	public Long getId() {
 		return id;
 	}
+	public String getUIString() {
+		return "null";
+	}
 }

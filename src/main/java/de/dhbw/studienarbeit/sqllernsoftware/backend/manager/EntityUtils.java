@@ -1,4 +1,4 @@
-package main.java.de.dhbw.studienarbeit.sqllernsoftware.backend.manager;
+package de.dhbw.studienarbeit.sqllernsoftware.backend.manager;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,5 +10,10 @@ public class EntityUtils {
 	public EntityUtils() {
 		
 	}
+	//Util zum vergleichen der Ergebnisse
+	//von aufgaben ergebnisse
+	//von WIssensfragen
+	//
+	
 	
 }

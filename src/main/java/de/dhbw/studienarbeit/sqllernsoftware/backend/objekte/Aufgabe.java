@@ -68,4 +68,17 @@ public class Aufgabe extends ObjectWithId {
 	public int getSchwierigkeit() {
 		return schwierigkeit;
 	}
+
+	public int getReihenfolge() {
+		return reihenfolge;
+	}
+
+	public Aufgabenkollektion getAufgabenkollektion() {
+		return aufgabenkollektion;
+	}
+	@Override
+	public String getUIString() {
+		return aufgabentext;
+	}
+	
 }

@@ -20,6 +20,14 @@ public class LektionsInhaltAufgabe extends LektionsInhalt {
 		this.antwort = antwort;
 	}
 
+	public String getFrage() {
+		return frage;
+	}
+
+	public String getAntwort() {
+		return antwort;
+	}
+
 
 /*----------------------------------------------------------------------*/
 	
