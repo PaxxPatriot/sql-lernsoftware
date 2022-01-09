@@ -1,7 +1,6 @@
 package de.dhbw.studienarbeit.sqllernsoftware.datenbasis;
 
 import java.sql.*;
-import java.util.Stack;
 import java.util.logging.Logger;
 
 public class DatenbasisController {
@@ -20,7 +19,7 @@ public class DatenbasisController {
     public static ResultSet[] executeAbfrageUndMusterloesung(String query, String loesung) {
         ResultSet[] abfrageUndLoesung = new ResultSet[2];
         try {
-            Statement stmtQuery  = connection.createStatement();
+            Statement stmtQuery = connection.createStatement();
             Statement stmtLoesung = connection.createStatement();
             abfrageUndLoesung[0] = stmtQuery.executeQuery(query);
             abfrageUndLoesung[1] = stmtLoesung.executeQuery(loesung);
