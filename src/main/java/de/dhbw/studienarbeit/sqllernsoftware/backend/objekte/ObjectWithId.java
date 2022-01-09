@@ -1,5 +1,5 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
-
+ 
 import javax.persistence.*;
 
 @Entity
@@ -15,5 +15,8 @@ public abstract class ObjectWithId {
 	
 	public Long getId() {
 		return id;
+	}
+	public String getUIString() {
+		return "null";
 	}
 }

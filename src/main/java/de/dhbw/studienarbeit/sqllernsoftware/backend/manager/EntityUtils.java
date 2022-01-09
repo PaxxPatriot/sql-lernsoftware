@@ -10,5 +10,10 @@ public class EntityUtils {
 	public EntityUtils() {
 		
 	}
+	//Util zum vergleichen der Ergebnisse
+	//von aufgaben ergebnisse
+	//von WIssensfragen
+	//
+	
 	
 }

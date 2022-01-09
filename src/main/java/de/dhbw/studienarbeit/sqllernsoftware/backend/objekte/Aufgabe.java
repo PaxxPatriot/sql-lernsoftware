@@ -1,7 +1,9 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 
-import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Aufgabentyp;
+
 import javax.persistence.*;
+
+import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Aufgabentyp;
 
 @Entity
 @Table(name = "aufgabe")
@@ -66,4 +68,17 @@ public class Aufgabe extends ObjectWithId {
 	public int getSchwierigkeit() {
 		return schwierigkeit;
 	}
+
+	public int getReihenfolge() {
+		return reihenfolge;
+	}
+
+	public Aufgabenkollektion getAufgabenkollektion() {
+		return aufgabenkollektion;
+	}
+	@Override
+	public String getUIString() {
+		return aufgabentext;
+	}
+	
 }

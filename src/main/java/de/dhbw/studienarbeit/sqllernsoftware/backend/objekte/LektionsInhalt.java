@@ -21,5 +21,17 @@ public abstract class LektionsInhalt extends ObjectWithId {
 		this.reihenfolge = reihenfolge;
 	}
 
+	public Inhaltstyp getTyp() {
+		return typ;
+	}
+
+	public Lektion getLektion() {
+		return lektion;
+	}
+
+	public int getReihenfolge() {
+		return reihenfolge;
+	}
+
 	
 }

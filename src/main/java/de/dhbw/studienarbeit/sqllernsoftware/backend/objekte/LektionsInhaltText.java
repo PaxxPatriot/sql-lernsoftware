@@ -3,6 +3,7 @@ package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 import javax.persistence.*;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Inhaltstyp;
 
+
 @Entity
 @Table(name = "lektionstext")
 public class LektionsInhaltText extends LektionsInhalt {
