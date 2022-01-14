@@ -9,7 +9,7 @@ public class OutputResultSet {
 	ResultSet result = null;
 
 	ArrayList<String> columnHeads = new ArrayList<String>();
-	ArrayList<String[]> transcribeResult = new ArrayList<String[]>();
+	ArrayList<String> transcribeResult = new ArrayList<String>();
 
 	public OutputResultSet(ResultSet result) {
 		super();
@@ -36,11 +36,10 @@ public class OutputResultSet {
 	private void transcribe() {
 		try {
 			while(result.next()) {
-				String[] row  = new String[columnHeads.size()];
-				int count = 0;
+				String row  = "";
 				
 				for(String label: columnHeads) {
-					row[count] = result.getString(label);
+					row += result.getString(label) + ";";
 				}
 				transcribeResult.add(row);
 			}
@@ -49,7 +48,14 @@ public class OutputResultSet {
 			e.printStackTrace();
 		}
 	}
+	public ArrayList<String> getColumnHeads() {
+		return columnHeads;
+	}
+	public ArrayList<String> getTranscribeResult() {
+		return transcribeResult;
+	}
 
+	
 }
 
 
