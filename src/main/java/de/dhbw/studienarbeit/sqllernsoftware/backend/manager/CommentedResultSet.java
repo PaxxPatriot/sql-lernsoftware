@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ResultComment;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 
-public class commentedResultSet {
+public class CommentedResultSet {
 
 	private OutputResultSet userResult = null;
 	private OutputResultSet correctResult = null;
@@ -22,7 +22,7 @@ public class commentedResultSet {
 	
 
 	
-	public commentedResultSet(OutputResultSet userResult, OutputResultSet correctResult, Aufgabe aufgabe,
+	public CommentedResultSet(OutputResultSet userResult, OutputResultSet correctResult, Aufgabe aufgabe,
 			String userInput) {
 		super();
 		this.userResult = userResult;
@@ -38,7 +38,18 @@ public class commentedResultSet {
 		if(aufgabe.getMusterloesung().equalsIgnoreCase(userInput)) {
 			return setComment(ResultComment.M);
 		}
-		
+		if(!matchingColumnsNumber()) {
+			return setComment(ResultComment.C);
+		}
+		if(missingRows.size() == 0 && excessRows.size() == 0) {
+			return setComment(ResultComment.E);
+		}
+		if(missingRows.size() > 0) {
+			return setComment(ResultComment.F);
+		}
+		if(excessRows.size() > 0) {
+			return setComment(ResultComment.Z);
+		}
 		return comment;
 
 	}
