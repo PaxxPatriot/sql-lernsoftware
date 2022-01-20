@@ -9,5 +9,7 @@ module de.dhbw.studienarbeit.sqllernsoftware {
 
     opens de.dhbw.studienarbeit.sqllernsoftware to javafx.fxml;
     opens de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
+    opens de.dhbw.studienarbeit.sqllernsoftware.persistence;
     exports de.dhbw.studienarbeit.sqllernsoftware;
+    opens de.dhbw.studienarbeit.sqllernsoftware.datenbasis;
 }
