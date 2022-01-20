@@ -1,11 +1,9 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.manager;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ResultComment;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
+
+import java.util.ArrayList;
 
 public class CommentedResultSet {
 

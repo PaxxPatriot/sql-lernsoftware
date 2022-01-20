@@ -1,7 +1,10 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 
-import javax.persistence.*;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Inhaltstyp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
 @Entity

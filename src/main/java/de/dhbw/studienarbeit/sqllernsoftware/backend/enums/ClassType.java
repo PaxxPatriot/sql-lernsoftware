@@ -1,6 +1,6 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.enums;
 
-import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.*;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
 
 
 public enum ClassType {

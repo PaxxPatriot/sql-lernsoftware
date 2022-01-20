@@ -1,9 +1,9 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 
 
-import javax.persistence.*;
-
 import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Aufgabentyp;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "aufgabe")
