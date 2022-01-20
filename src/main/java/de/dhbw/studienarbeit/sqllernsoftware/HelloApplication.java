@@ -24,7 +24,7 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        DatenbasisController.connect("jdbc:sqlite:data/hochschule.db");
+        DatenbasisController.connect("data/hochschule.db");
         AppdataController appdataController = new AppdataController();
         Aufgabe aufgabe = appdataController.getAufgabenkollektionById(2L).getAufgabe(0);
         EntityUtils entityUtils = new EntityUtils();
