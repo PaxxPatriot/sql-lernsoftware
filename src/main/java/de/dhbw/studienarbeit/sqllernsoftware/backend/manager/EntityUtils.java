@@ -7,11 +7,8 @@ import de.dhbw.studienarbeit.sqllernsoftware.datenbasis.DatenbasisController;
 import java.sql.ResultSet;
 
 public class EntityUtils {
-
-	DatenbasisController dbCntrl = null;
 	
-	public EntityUtils(DatenbasisController dbCntrl) {
-		this.dbCntrl = dbCntrl;
+	public EntityUtils() {
 	}
 	
 	//Util zum vergleichen der Ergebnisse

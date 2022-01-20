@@ -39,6 +39,10 @@ public class CommentedResultSet {
 		if(!matchingColumnsNumber()) {
 			return setComment(ResultComment.C);
 		}
+
+		this.calculateExcessRows();
+		this.calculateMissingRows();
+
 		if(missingRows.size() == 0 && excessRows.size() == 0) {
 			return setComment(ResultComment.E);
 		}
@@ -73,7 +77,7 @@ public class CommentedResultSet {
 			}
 		}
 	}
-	private void missingExcessRows() {
+	private void calculateMissingRows() {
 		for(String i: userResult.getTranscribeResult()) {
 			if(!(correctResult.getTranscribeResult().contains(i))) {
 				excessRows.add(i);
