@@ -1,6 +1,9 @@
 package de.dhbw.studienarbeit.sqllernsoftware;
 
+import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.EntityUtils;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
+import de.dhbw.studienarbeit.sqllernsoftware.datenbasis.DatenbasisController;
 import de.dhbw.studienarbeit.sqllernsoftware.persistence.AppdataController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,9 +24,11 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+        DatenbasisController.connect("data/hochschule.db");
         AppdataController appdataController = new AppdataController();
-        List<Lektion> lektionList = appdataController.getAllLektion();
-        System.out.println(lektionList.size());
+        Aufgabe aufgabe = appdataController.getAufgabenkollektionById(2L).getAufgabe(0);
+        EntityUtils entityUtils = new EntityUtils();
+        System.out.println(entityUtils.getComment(aufgabe, "SELECT * FROM Professoren WHERE 1 = 1").anzeigeText());
         launch();
     }
 }
