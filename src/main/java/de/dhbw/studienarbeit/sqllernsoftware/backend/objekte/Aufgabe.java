@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "aufgabe")
-public class Aufgabe extends ObjectWithId {
+public class Aufgabe extends ObjektMitId {
 	@Column(name = "titel")
 	private String titel; // titel der Aufgabe der angezeigt wird
 	@Column(name = "aufgabentext")

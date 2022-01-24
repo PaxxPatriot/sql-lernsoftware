@@ -4,14 +4,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class OutputResultSet {
+public class DBErgebnisAusgabe {
 
 	ResultSet result = null;
 
 	ArrayList<String> columnHeads = new ArrayList<String>();
 	ArrayList<String> transcribeResult = new ArrayList<String>();
 
-	public OutputResultSet(ResultSet result) {
+	public DBErgebnisAusgabe(ResultSet result) {
 		super();
 		this.result = result;
 		

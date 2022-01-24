@@ -28,7 +28,7 @@ public class HelloApplication extends Application {
         AppdataController appdataController = new AppdataController();
         Aufgabe aufgabe = appdataController.getAufgabenkollektionById(2L).getAufgabe(0);
         EntityUtils entityUtils = new EntityUtils();
-        System.out.println(entityUtils.getComment(aufgabe, "SELECT * FROM Professoren WHERE 1 = 1").anzeigeText());
+        System.out.println(entityUtils.getKommentar(aufgabe, "SELECT * FROM Professoren WHERE 1 = 1").anzeigeText());
         launch();
     }
 }
