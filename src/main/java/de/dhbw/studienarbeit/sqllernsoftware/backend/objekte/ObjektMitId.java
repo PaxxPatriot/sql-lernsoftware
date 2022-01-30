@@ -7,12 +7,12 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class ObjectWithId {
+public abstract class ObjektMitId {
 
 	@Id
 	private Long id;
 	
-	public ObjectWithId(Long id) {
+	public ObjektMitId(Long id) {
 		this.id = id;
 	}
 	

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "lektion")
-public class Lektion extends ObjectWithId {
+public class Lektion extends ObjektMitId {
 	@Column(name = "titel")
 	private String titel;
 	@Column(name = "beschreibung")

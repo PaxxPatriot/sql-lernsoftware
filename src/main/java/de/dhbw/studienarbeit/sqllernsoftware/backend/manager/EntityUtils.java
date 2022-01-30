@@ -1,6 +1,6 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.manager;
 
-import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ResultComment;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentar;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 import de.dhbw.studienarbeit.sqllernsoftware.datenbasis.DatenbasisController;
 
@@ -8,9 +8,10 @@ import java.sql.ResultSet;
 
 public class EntityUtils {
 	
+	DatenbasisController dbCntrl = new DatenbasisController();
+	
 	public EntityUtils() {
 
-		this.dbCntrl = new DatenbasisController();
 	}
 	
 	//Util zum vergleichen der Ergebnisse
@@ -18,11 +19,17 @@ public class EntityUtils {
 	//von WIssensfragen
 	//
 
-	public ResultComment getComment(Aufgabe aufgabe, String userInput) {
-		ResultSet[] dbResult = dbCntrl.executeAbfrageUndMusterloesung(aufgabe.getMusterloesung(), userInput);
-		CommentedResultSet cRS = new CommentedResultSet(new OutputResultSet(dbResult[1]), new OutputResultSet(dbResult[0]), aufgabe, userInput);
-
-		return cRS.getComment();		
+	public ErgebnisKommentar getKommentar(Aufgabe aufgabe, String userInput) {
+		return this.getDBKommentar(aufgabe, userInput).getKommentar();
 	}
 	
+	private DBErgebnisKommentar getDBKommentar(Aufgabe aufgabe, String userInput) {
+		ResultSet[] dbResult = dbCntrl.executeAbfrageUndMusterloesung(aufgabe.getMusterloesung(), userInput,aufgabe.getAufgabenkollektion().getDatenbank());
+		DBErgebnisKommentar dbErgebnisKommentar = new DBErgebnisKommentar(new DBErgebnisAusgabe(dbResult[1]), new DBErgebnisAusgabe(dbResult[0]), aufgabe, userInput);
+		return dbErgebnisKommentar;
+	}
+	
+	public AusgabeKommentar getAusgabeKommentar(Aufgabe aufgabe, String userInput) {
+		return this.getDBKommentar(aufgabe, userInput).getAusgabeKommentar();
+	}
 }

@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class LektionsInhalt extends ObjectWithId {
+public abstract class LektionsInhalt extends ObjektMitId {
 	@Column(name = "typ")
 	private Inhaltstyp typ;
 	@ManyToOne

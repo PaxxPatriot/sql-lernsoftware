@@ -1,26 +1,26 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.manager;
 
-import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ResultComment;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentar;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 
 import java.util.ArrayList;
 
-public class CommentedResultSet {
+public class DBErgebnisKommentar {
 
-	private OutputResultSet userResult = null;
-	private OutputResultSet correctResult = null;
+	private DBErgebnisAusgabe userResult = null;
+	private DBErgebnisAusgabe correctResult = null;
 	
-	private ArrayList<String> missingRows = new ArrayList<String>();
 	private ArrayList<String> excessRows = new ArrayList<String>();
+	private ArrayList<String> missingRows = new ArrayList<String>();
 	
 	private Aufgabe aufgabe = null;
 	private String userInput = null;
-	
-	private ResultComment comment= null;
+	private int numberArgument = 0;
+	private ErgebnisKommentar comment= null;
 	
 
 	
-	public CommentedResultSet(OutputResultSet userResult, OutputResultSet correctResult, Aufgabe aufgabe,
+	public DBErgebnisKommentar(DBErgebnisAusgabe userResult, DBErgebnisAusgabe correctResult, Aufgabe aufgabe,
 			String userInput) {
 		super();
 		this.userResult = userResult;
@@ -29,34 +29,43 @@ public class CommentedResultSet {
 		this.userInput = userInput;
 	}
 
+	public AusgabeKommentar getAusgabeKommentar() {
+		AusgabeKommentar ausgabe = new AusgabeKommentar(this.getKommentar());
+		
+		if(numberArgument != 0) {
+			ausgabe.addArgument(numberArgument+"");
+		}
+		return ausgabe;
+	}
 
-
-	public ResultComment getComment() {
+	public ErgebnisKommentar getKommentar() {
 		
 		if(aufgabe.getMusterloesung().equalsIgnoreCase(userInput)) {
-			return setComment(ResultComment.M);
+			return setComment(ErgebnisKommentar.M);
 		}
 		if(!matchingColumnsNumber()) {
-			return setComment(ResultComment.C);
+			return setComment(ErgebnisKommentar.C);
 		}
 
 		this.calculateExcessRows();
 		this.calculateMissingRows();
 
 		if(missingRows.size() == 0 && excessRows.size() == 0) {
-			return setComment(ResultComment.E);
+			return setComment(ErgebnisKommentar.E);
 		}
 		if(missingRows.size() > 0) {
-			return setComment(ResultComment.F);
+			numberArgument = missingRows.size();
+			return setComment(ErgebnisKommentar.F);
 		}
 		if(excessRows.size() > 0) {
-			return setComment(ResultComment.Z);
+			numberArgument = excessRows.size();
+			return setComment(ErgebnisKommentar.Z);
 		}
 		return comment;
 
 	}
 	
-	private ResultComment setComment(ResultComment r) {
+	private ErgebnisKommentar setComment(ErgebnisKommentar r) {
 		comment = r;
 		return comment;
 	}
@@ -80,7 +89,7 @@ public class CommentedResultSet {
 	private void calculateMissingRows() {
 		for(String i: userResult.getTranscribeResult()) {
 			if(!(correctResult.getTranscribeResult().contains(i))) {
-				excessRows.add(i);
+				missingRows.add(i);
 			}
 		}
 	}
