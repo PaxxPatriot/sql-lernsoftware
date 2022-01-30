@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class AppdataController {
     private static final Logger logger = Logger.getLogger("de.dhbw.studienarbeit.sqllernsoftware.persistence.AppdataController");
 
-    public static EntityManager getEntityManager() {
+    private static EntityManager getEntityManager() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("de.dhbw.studienarbeit.sqllernsoftware.appdata");
         return emf.createEntityManager();
     }
@@ -35,4 +35,8 @@ public class AppdataController {
         return jpqlQuery.getSingleResult();
     }
 
+    public List<Aufgabenkollektion> getAllAufgabenkollektion() {
+        TypedQuery<Aufgabenkollektion> jpqlQuery = getEntityManager().createQuery("SELECT a FROM Aufgabenkollektion a", Aufgabenkollektion.class);
+        return jpqlQuery.getResultList();
+    }
 }
