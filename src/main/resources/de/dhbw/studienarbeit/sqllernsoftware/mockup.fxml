@@ -15,7 +15,6 @@
       fx:controller="de.dhbw.studienarbeit.sqllernsoftware.HelloController">
     <MenuBar fx:id="menuBar">
         <menus>
-            #Benennung der Menuepunkte variabel machen
             <Menu text="Lektionen">
                 <items>
                     <MenuItem text="Lektion 1"/>
