@@ -1,35 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-
-<?import javafx.scene.control.Button?>
-
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 
 <VBox id="vBoxBase" xmlns:fx="http://javafx.com/fxml"
       fx:controller="de.dhbw.studienarbeit.sqllernsoftware.HelloController">
     <MenuBar fx:id="menuBar">
-        <menus>
-            <Menu text="Lektionen">
-                <items>
-                    <MenuItem text="Lektion 1"/>
-                    <MenuItem text="Lektion 2"/>
-                    <MenuItem text="Lektion 3"/>
-                </items>
-            </Menu>
-            <Menu text="Uebungen">
-                <items>
-                    <MenuItem text="Uebung 1"/>
-                    <MenuItem text="Uebung 2"/>
-                    <MenuItem text="Uebung 3"/>
-                </items>
-            </Menu>
-            <Menu text="Klausur"/>
-        </menus>
+            <Menu fx:id="lectureMenu" text="Lektionen"/>
+            <Menu fx:id="exerciseMenu" text="Uebungen"/>
+            <Menu fx:id="testMenu" text="Klausur"/>
     </MenuBar>
 </VBox>
