@@ -3,16 +3,26 @@ package de.dhbw.studienarbeit.sqllernsoftware;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import de.dhbw.studienarbeit.sqllernsoftware.persistence.AppdataController;
 import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
+import org.hibernate.tool.schema.Action;
 
+import java.io.IOException;
 import java.util.List;
 
 public class HelloController {
     private final AppdataController appdataController = new AppdataController();
+
+    @FXML
+    private Parent root;
 
     @FXML
     private Label welcomeText;
@@ -36,7 +46,7 @@ public class HelloController {
     }
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         List<Lektion> lektionen = appdataController.getAllLektion();
         List<Aufgabenkollektion> aufgabenkollektionen = appdataController.getAllAufgabenkollektion();
         for (Lektion lektion : lektionen) {
@@ -46,9 +56,27 @@ public class HelloController {
 
         for (Aufgabenkollektion kollektion : aufgabenkollektionen) {
             MenuItem menuItem = new MenuItem(kollektion.getTitel());
+            menuItem.setOnAction(e -> {
+                try {
+                    gotoExercise(e);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            });
             exerciseMenu.getItems().add(menuItem);
         }
 
+    }
+
+    public void gotoExercise(ActionEvent event) throws IOException {
+        System.out.println("gotoExercise ausgeführt!");
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("basic_aufgabe.fxml"));
+        Parent AufgabenManager = loader.load();
+        Scene AufgabenManagerScene = new Scene(AufgabenManager, 1280, 700);
+
+        Stage window = (Stage) root.getScene().getWindow();
+        window.setScene(AufgabenManagerScene);
+        window.show();
     }
 
 
