@@ -22,6 +22,10 @@ public class HelloController {
     private final AppdataController appdataController = new AppdataController();
 
     @FXML
+    private Parent mockup_include;
+
+
+    @FXML
     private Parent root;
 
     @FXML
@@ -51,6 +55,13 @@ public class HelloController {
         List<Aufgabenkollektion> aufgabenkollektionen = appdataController.getAllAufgabenkollektion();
         for (Lektion lektion : lektionen) {
             MenuItem menuItem = new MenuItem(""+lektion.getTitel());
+            menuItem.setOnAction(e -> {
+                try {
+                    gotoLecture(e);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            });
             lectureMenu.getItems().add(menuItem);
         }
 
@@ -69,7 +80,6 @@ public class HelloController {
     }
 
     public void gotoExercise(ActionEvent event) throws IOException {
-        System.out.println("gotoExercise ausgeführt!");
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("basic_aufgabe.fxml"));
         Parent AufgabenManager = loader.load();
         Scene AufgabenManagerScene = new Scene(AufgabenManager, 1280, 700);
@@ -77,6 +87,16 @@ public class HelloController {
         Stage window = (Stage) root.getScene().getWindow();
         window.setScene(AufgabenManagerScene);
         window.show();
+    }
+
+    public void gotoLecture(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("basic_lecture.fxml"));
+        Parent LektionenManager = loader.load();
+        Scene LektionenManagerScene = new Scene(LektionenManager, 1280, 700);
+
+        //Stage window = (Stage) root.getScene().getWindow();
+        //window.setScene(LektionenManagerScene);
+        //window.show();
     }
 
 
