@@ -11,5 +11,4 @@
             <Menu fx:id="exerciseMenu" text="Uebungen"/>
             <Menu fx:id="testMenu" text="Klausur"/>
     </MenuBar>
-    <fx:include fx:id="mockup_include" source="start.fxml"/>
 </VBox>

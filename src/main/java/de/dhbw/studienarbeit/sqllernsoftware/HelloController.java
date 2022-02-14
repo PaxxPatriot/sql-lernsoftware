@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import de.dhbw.studienarbeit.sqllernsoftware.persistence.AppdataController;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.hibernate.tool.schema.Action;
 
@@ -22,11 +23,11 @@ public class HelloController {
     private final AppdataController appdataController = new AppdataController();
 
     @FXML
-    private Parent mockup_include;
+    private Parent menuBar;
 
 
     @FXML
-    private Parent root;
+    private VBox root;
 
     @FXML
     private Label welcomeText;
@@ -84,9 +85,11 @@ public class HelloController {
         Parent AufgabenManager = loader.load();
         Scene AufgabenManagerScene = new Scene(AufgabenManager, 1280, 700);
 
-        Stage window = (Stage) root.getScene().getWindow();
-        window.setScene(AufgabenManagerScene);
-        window.show();
+        root.getChildren().add(AufgabenManager);
+
+        //Stage window = (Stage) menuBar.getScene().getWindow();
+        //window.setScene(AufgabenManagerScene);
+        //window.show();
     }
 
     public void gotoLecture(ActionEvent event) throws IOException {
