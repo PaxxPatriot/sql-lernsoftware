@@ -8,7 +8,8 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="de.dhbw.studienarbeit.sqllernsoftware.BasicAufgabeController"
-            prefHeight="400.0" prefWidth="600.0">
-<Label text="Aufgabe-Basis"/>
+            prefHeight="400.0" prefWidth="600.0" fx:id="exerciseAP">
+    <Label fx:id="exerciseTitel"/>
+    <Label fx:id="exerciseDescription"/>
+
 </AnchorPane>

@@ -8,7 +8,8 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="de.dhbw.studienarbeit.sqllernsoftware.BasicLectureController"
-            prefHeight="400.0" prefWidth="600.0">
-<Label text="Basic Lecture"/>
+            prefHeight="400.0" prefWidth="600.0" fx:id="lectureAP">
+    <Label fx:id="lectureTitel"/>
+
+    <Label fx:id="lectureDescription"/>
 </AnchorPane>
