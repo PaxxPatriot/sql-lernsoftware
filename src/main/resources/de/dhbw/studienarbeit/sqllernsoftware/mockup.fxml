@@ -8,7 +8,7 @@
       fx:controller="de.dhbw.studienarbeit.sqllernsoftware.HelloController">
     <MenuBar fx:id="menuBar">
             <Menu fx:id="lectureMenu" text="Lektionen"/>
-            <Menu fx:id="exerciseMenu" text="Uebungen"/>
+            <Menu fx:id="exerciseMenu" text="Übungen"/>
             <Menu fx:id="testMenu" text="Klausur"/>
     </MenuBar>
 </VBox>
