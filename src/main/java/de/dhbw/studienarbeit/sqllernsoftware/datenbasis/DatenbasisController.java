@@ -9,16 +9,6 @@ import java.util.logging.Logger;
 
 public class DatenbasisController {
     private static final Logger logger = Logger.getLogger("de.dhbw.studienarbeit.sqllernsoftware.datenbasis.DatenbasisController");
-    private static Connection connection = null;
-
-    public static void connect(String datenbankPfad) {
-        try {
-            connection = DriverManager.getConnection(String.format("jdbc:sqlite:%s", datenbankPfad));
-            logger.info("Connection to SQLite has been established.");
-        } catch (SQLException e) {
-            logger.warning(e.getMessage());
-        }
-    }
 
     private static ResultSet executeOnDatabase(String query, String datenbankPfad) throws SQLException {
         try (Connection conn = DriverManager.getConnection(datenbankPfad)) {
@@ -53,8 +43,8 @@ public class DatenbasisController {
             abfrageUndLoesung[0] = executeOnDatabase(query, url_user);
             abfrageUndLoesung[1] = executeOnDatabase(loesung, url_muster);
             return abfrageUndLoesung;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            logger.warning(e.getMessage());
         }
         return null;
     }
@@ -78,14 +68,10 @@ public class DatenbasisController {
 
         try (Connection conn = DriverManager.getConnection(url)) {
             if (conn != null) {
-                DatabaseMetaData meta = conn.getMetaData();
-                System.out.println("The driver name is " + meta.getDriverName());
-                System.out.println("A new database has been created.");
                 return url;
             }
-
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            logger.warning(e.getMessage());
         }
         return "";
     }
@@ -107,8 +93,8 @@ public class DatenbasisController {
                     }
                 }
             }
-        } catch (SQLException | FileNotFoundException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException | FileNotFoundException e) {
+            logger.warning(e.getMessage());
         }
     }
 }
