@@ -2,8 +2,6 @@ package de.dhbw.studienarbeit.sqllernsoftware;
 
 import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.EntityUtils;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
-import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
-import de.dhbw.studienarbeit.sqllernsoftware.datenbasis.DatenbasisController;
 import de.dhbw.studienarbeit.sqllernsoftware.persistence.AppdataController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
 public class HelloApplication extends Application {
     @Override
@@ -24,7 +21,6 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        DatenbasisController.connect("data/hochschule.db");
         AppdataController appdataController = new AppdataController();
         Aufgabe aufgabe = appdataController.getAufgabenkollektionById(2L).getAufgabe(0);
         EntityUtils entityUtils = new EntityUtils();
