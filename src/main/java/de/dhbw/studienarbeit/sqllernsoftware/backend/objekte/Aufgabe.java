@@ -24,11 +24,11 @@ public class Aufgabe extends ObjektMitId {
 	@Column(name = "reihenfolge")
 	private int reihenfolge;
 	@ManyToOne
-	@JoinColumn(name = "aufgabenkollektion")
-	private Aufgabenkollektion aufgabenkollektion;
+	@JoinColumn(name = "aufgabenkollektion_id")
+	private Aufgabenkollektion aufgabenkollektionId;
 
-	public Aufgabe(Long id, String titel, String aufgabentext, String musterloesung, String pruefungsbefehl,
-			Aufgabentyp typ, int schwierigkeit, int reihenfolge, Aufgabenkollektion aufgabenkollektion) {
+	public Aufgabe(String id, String titel, String aufgabentext, String musterloesung, String pruefungsbefehl,
+				   Aufgabentyp typ, int schwierigkeit, int reihenfolge, Aufgabenkollektion aufgabenkollektionId) {
 		super(id);
 		this.titel = titel;
 		this.aufgabentext = aufgabentext;
@@ -37,7 +37,7 @@ public class Aufgabe extends ObjektMitId {
 		this.typ = typ;
 		this.schwierigkeit = schwierigkeit;
 		this.reihenfolge = reihenfolge;
-		this.aufgabenkollektion = aufgabenkollektion;
+		this.aufgabenkollektionId = aufgabenkollektionId;
 	}
 
 	public Aufgabe() {
@@ -75,7 +75,7 @@ public class Aufgabe extends ObjektMitId {
 	}
 
 	public Aufgabenkollektion getAufgabenkollektion() {
-		return aufgabenkollektion;
+		return aufgabenkollektionId;
 	}
 	@Override
 	public String getUIString() {
