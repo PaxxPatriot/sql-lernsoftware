@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class LektionsInhalt extends ObjektMitId {
+	@Enumerated(EnumType.STRING)
 	@Column(name = "typ")
 	private Inhaltstyp typ;
 	@ManyToOne

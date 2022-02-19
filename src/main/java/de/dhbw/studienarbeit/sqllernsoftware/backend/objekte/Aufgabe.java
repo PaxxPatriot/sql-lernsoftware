@@ -16,6 +16,7 @@ public class Aufgabe extends ObjektMitId {
 	private String musterloesung; // sqlbefehl der das gewünschte ergebnis zurück liefert
 	@Column(name = "pruefungsbefehl")
 	private String pruefungsbefehl; // sql befehl um vorgenommene Aenderungen in der Datenbank zu testen
+	@Enumerated(EnumType.STRING)
 	@Column(name = "typ")
 	private Aufgabentyp typ; // art der aufgabe, auch wichtig für prüfung der antwort
 	@Column(name = "schwierigkeit")
