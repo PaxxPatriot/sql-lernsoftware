@@ -1,5 +1,8 @@
 package de.dhbw.studienarbeit.sqllernsoftware.datenbasis;
 
+import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Aufgabentyp;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.DBErgebnisAusgabe;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.*;
@@ -10,10 +13,10 @@ import java.util.logging.Logger;
 public class DatenbasisController {
     private static final Logger logger = Logger.getLogger("de.dhbw.studienarbeit.sqllernsoftware.datenbasis.DatenbasisController");
 
-    private static ResultSet executeQueryOnDatabase(String query, String datenbankPfad) throws SQLException {
+    private static DBErgebnisAusgabe executeQueryOnDatabase(String query, String datenbankPfad) throws SQLException {
         try (Connection conn = DriverManager.getConnection(datenbankPfad)) {
             Statement stmt = conn.createStatement();
-            return stmt.executeQuery(query);
+            return new DBErgebnisAusgabe(stmt.executeQuery(query));
         }
     }
 
@@ -24,35 +27,36 @@ public class DatenbasisController {
         }
     }
 
-    public static ResultSet[] executeAbfrageUndMusterloesung(String query, String loesung, String datenbankPfad) {
-        ResultSet[] abfrageUndLoesung = new ResultSet[2];
+    public static DBErgebnisAusgabe[] executeAbfrageUndMusterloesung(Aufgabentyp aufgabentyp, String userQuery, String loesungQuery, String pruefungsQuery, String datenbankPfad) {
+        DBErgebnisAusgabe[] abfrageUndLoesung = new DBErgebnisAusgabe[2];
         String url = String.format("jdbc:sqlite:%s", datenbankPfad);
-        try {
-            abfrageUndLoesung[0] = executeQueryOnDatabase(query, url);
-            abfrageUndLoesung[1] = executeQueryOnDatabase(loesung, url);
-            return abfrageUndLoesung;
-        } catch (SQLException e) {
-            logger.warning(e.getMessage());
-        }
-        return null;
-    }
-
-    public static int[] executeAbfrageUndMusterloesungOnCopyOfDatenbasis(String query, String loesung) {
-        int[] abfrageUndLoesung = new int[2];
-
-        String url_user = copyDatenbasis();
-        String url_muster = copyDatenbasis();
-        try {
-            abfrageUndLoesung[0] = executeUpdateOnDatabase(query, url_user);
-            abfrageUndLoesung[1] = executeUpdateOnDatabase(loesung, url_muster);
-            return abfrageUndLoesung;
-        } catch (SQLException e) {
-            logger.warning(e.getMessage());
-        }
-        finally {
-            // Delete temporary copies of Datenbasis
-            new File(url_user.substring(12)).delete();
-            new File(url_muster.substring(12)).delete();
+        switch (aufgabentyp) {
+            case S -> {
+                try {
+                    abfrageUndLoesung[0] = executeQueryOnDatabase(userQuery, url);
+                    abfrageUndLoesung[1] = executeQueryOnDatabase(loesungQuery, url);
+                    return abfrageUndLoesung;
+                } catch (SQLException e) {
+                    logger.warning(e.getMessage());
+                }
+            }
+            case C, D, U -> {
+                String url_user = copyDatenbasis();
+                String url_muster = copyDatenbasis();
+                try {
+                    executeUpdateOnDatabase(userQuery, url_user);
+                    executeUpdateOnDatabase(loesungQuery, url_muster);
+                    abfrageUndLoesung[0] = executeQueryOnDatabase(pruefungsQuery, url_user);
+                    abfrageUndLoesung[1] = executeQueryOnDatabase(pruefungsQuery, url_muster);
+                    return abfrageUndLoesung;
+                } catch (SQLException e) {
+                    logger.warning(e.getMessage());
+                } finally {
+                    // Delete temporary copies of Datenbasis
+                    new File(url_user.substring(12)).delete();
+                    new File(url_muster.substring(12)).delete();
+                }
+            }
         }
         return null;
     }

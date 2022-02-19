@@ -2,6 +2,7 @@ package de.dhbw.studienarbeit.sqllernsoftware;
 
 import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.EntityUtils;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
 import de.dhbw.studienarbeit.sqllernsoftware.persistence.AppdataController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class HelloApplication extends Application {
     @Override
@@ -22,9 +24,12 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         AppdataController appdataController = new AppdataController();
-        Aufgabe aufgabe = appdataController.getAufgabenkollektionById(2L).getAufgabe(0);
+        List<Aufgabenkollektion> aufgabenkollektion = appdataController.getAllAufgabenkollektion();
+        System.out.println(aufgabenkollektion.get(0).getId());
+        Aufgabe aufgabe = aufgabenkollektion.get(0).getAufgabe(1);
+        System.out.println(aufgabe.getAufgabentext());
         EntityUtils entityUtils = new EntityUtils();
-        System.out.println(entityUtils.getKommentar(aufgabe, "SELECT * FROM Professoren WHERE 1 = 1").anzeigeText());
+        System.out.println(entityUtils.getAusgabeKommentar(aufgabe, "DELETE FROM Professoren WHERE id = 5588;").getOutput());
         launch();
     }
 }
