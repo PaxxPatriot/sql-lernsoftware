@@ -8,8 +8,6 @@ import java.sql.ResultSet;
 
 public class EntityUtils {
 	
-	DatenbasisController dbCntrl = new DatenbasisController();
-	
 	public EntityUtils() {
 
 	}
@@ -20,13 +18,26 @@ public class EntityUtils {
 	//
 
 	public ErgebnisKommentar getKommentar(Aufgabe aufgabe, String userInput) {
-		return this.getDBKommentar(aufgabe, userInput).getKommentar();
+		ErgebnisKommentar kommentar = this.getDBKommentar(aufgabe, userInput).getKommentar();
+		if (kommentar == null) {
+			return ErgebnisKommentar.ERROR;
+		}
+		return kommentar;
 	}
 	
 	private DBErgebnisKommentar getDBKommentar(Aufgabe aufgabe, String userInput) {
-		ResultSet[] dbResult = dbCntrl.executeAbfrageUndMusterloesung(aufgabe.getMusterloesung(), userInput,aufgabe.getAufgabenkollektion().getDatenbank());
-		DBErgebnisKommentar dbErgebnisKommentar = new DBErgebnisKommentar(new DBErgebnisAusgabe(dbResult[1]), new DBErgebnisAusgabe(dbResult[0]), aufgabe, userInput);
-		return dbErgebnisKommentar;
+		System.out.println(aufgabe.getTyp());
+		switch (aufgabe.getTyp()) {
+			case S -> {
+				ResultSet[] dbResult = DatenbasisController.executeAbfrageUndMusterloesung(aufgabe.getMusterloesung(), userInput, aufgabe.getAufgabenkollektion().getDatenbank());
+				return new DBErgebnisKommentar(new DBErgebnisAusgabe(dbResult[1]), new DBErgebnisAusgabe(dbResult[0]), aufgabe, userInput);
+			}
+			case D -> {
+				int[] deleted = DatenbasisController.executeAbfrageUndMusterloesungOnCopyOfDatenbasis(aufgabe.getMusterloesung(), userInput);
+				return new DBErgebnisKommentar(new DBErgebnisAusgabe(deleted[1]), new DBErgebnisAusgabe(deleted[0]), aufgabe, userInput);
+			}
+		}
+		return null;
 	}
 	
 	public AusgabeKommentar getAusgabeKommentar(Aufgabe aufgabe, String userInput) {

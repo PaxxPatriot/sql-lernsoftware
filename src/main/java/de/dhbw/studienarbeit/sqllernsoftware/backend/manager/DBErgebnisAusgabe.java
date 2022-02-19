@@ -17,6 +17,11 @@ public class DBErgebnisAusgabe {
 		
 		this.init();
 	}
+
+	public DBErgebnisAusgabe(int result) {
+		super();
+		// TODO Erstelle DBErgbnisAusgabe anhand der geupdateden Zeilen
+	}
 	private void init() {
 		this.getColumns();
 		this.transcribe();
