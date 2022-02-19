@@ -80,15 +80,15 @@ public class DBErgebnisKommentar {
 	}
 	
 	private void calculateExcessRows() {
-		for(String i: correctResult.getTranscribeResult()) {
-			if(!(userResult.getTranscribeResult().contains(i))) {
+		for(String i: userResult.getTranscribeResult()) {
+			if(!(correctResult.getTranscribeResult().contains(i))) {
 				excessRows.add(i);
 			}
 		}
 	}
 	private void calculateMissingRows() {
-		for(String i: userResult.getTranscribeResult()) {
-			if(!(correctResult.getTranscribeResult().contains(i))) {
+		for(String i: correctResult.getTranscribeResult()) {
+			if(!(userResult.getTranscribeResult().contains(i))) {
 				missingRows.add(i);
 			}
 		}

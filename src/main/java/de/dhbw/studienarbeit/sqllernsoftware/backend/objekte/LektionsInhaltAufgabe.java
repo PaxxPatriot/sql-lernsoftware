@@ -15,8 +15,8 @@ public class LektionsInhaltAufgabe extends LektionsInhalt {
 	@Column(name = "antwort")
 	private String antwort;
 	
-	public LektionsInhaltAufgabe(Long id, Lektion lektion, int reihenfolge, String frage,
-			String antwort) {
+	public LektionsInhaltAufgabe(String id, Lektion lektion, int reihenfolge, String frage,
+								 String antwort) {
 		super(id, Inhaltstyp.B, lektion, reihenfolge);
 		this.frage = frage;
 		this.antwort = antwort;

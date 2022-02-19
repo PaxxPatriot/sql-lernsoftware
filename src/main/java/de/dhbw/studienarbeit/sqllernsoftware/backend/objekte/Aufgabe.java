@@ -16,6 +16,7 @@ public class Aufgabe extends ObjektMitId {
 	private String musterloesung; // sqlbefehl der das gewünschte ergebnis zurück liefert
 	@Column(name = "pruefungsbefehl")
 	private String pruefungsbefehl; // sql befehl um vorgenommene Aenderungen in der Datenbank zu testen
+	@Enumerated(EnumType.STRING)
 	@Column(name = "typ")
 	private Aufgabentyp typ; // art der aufgabe, auch wichtig für prüfung der antwort
 	@Column(name = "schwierigkeit")
@@ -23,11 +24,11 @@ public class Aufgabe extends ObjektMitId {
 	@Column(name = "reihenfolge")
 	private int reihenfolge;
 	@ManyToOne
-	@JoinColumn(name = "aufgabenkollektion")
-	private Aufgabenkollektion aufgabenkollektion;
+	@JoinColumn(name = "aufgabenkollektion_id")
+	private Aufgabenkollektion aufgabenkollektionId;
 
-	public Aufgabe(Long id, String titel, String aufgabentext, String musterloesung, String pruefungsbefehl,
-			Aufgabentyp typ, int schwierigkeit, int reihenfolge, Aufgabenkollektion aufgabenkollektion) {
+	public Aufgabe(String id, String titel, String aufgabentext, String musterloesung, String pruefungsbefehl,
+				   Aufgabentyp typ, int schwierigkeit, int reihenfolge, Aufgabenkollektion aufgabenkollektionId) {
 		super(id);
 		this.titel = titel;
 		this.aufgabentext = aufgabentext;
@@ -36,7 +37,7 @@ public class Aufgabe extends ObjektMitId {
 		this.typ = typ;
 		this.schwierigkeit = schwierigkeit;
 		this.reihenfolge = reihenfolge;
-		this.aufgabenkollektion = aufgabenkollektion;
+		this.aufgabenkollektionId = aufgabenkollektionId;
 	}
 
 	public Aufgabe() {
@@ -74,7 +75,7 @@ public class Aufgabe extends ObjektMitId {
 	}
 
 	public Aufgabenkollektion getAufgabenkollektion() {
-		return aufgabenkollektion;
+		return aufgabenkollektionId;
 	}
 	@Override
 	public String getUIString() {

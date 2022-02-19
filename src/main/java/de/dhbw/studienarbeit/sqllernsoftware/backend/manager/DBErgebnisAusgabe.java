@@ -17,6 +17,7 @@ public class DBErgebnisAusgabe {
 		
 		this.init();
 	}
+
 	private void init() {
 		this.getColumns();
 		this.transcribe();

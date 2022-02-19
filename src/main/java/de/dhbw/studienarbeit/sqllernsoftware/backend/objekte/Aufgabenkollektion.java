@@ -17,17 +17,17 @@ public class Aufgabenkollektion extends ObjektMitId {
 	private String beschreibung; // beschreibung der Kollektion
 	@Column(name = "datenbank")
 	private String datenbank; // verwendete Datenbank
-	@OneToMany(mappedBy = "aufgabenkollektion")
+	@OneToMany(mappedBy = "aufgabenkollektionId")
 	private List<Aufgabe> aufgabenliste; // key = reihenfolge
 
-	public Aufgabenkollektion(long id, String titel, String beschreibung, String datenbank) {
+	public Aufgabenkollektion(String id, String titel, String beschreibung, String datenbank) {
 		super(id);
 		this.titel = titel;
 		this.beschreibung = beschreibung;
 		this.datenbank = datenbank;
 	}
 
-	public Aufgabenkollektion(Long id) {
+	public Aufgabenkollektion(String id) {
 		super(id);
 	}
 
