@@ -7,8 +7,9 @@
 <VBox fx:id="root" id="vBoxBase" xmlns:fx="http://javafx.com/fxml"
       fx:controller="de.dhbw.studienarbeit.sqllernsoftware.HelloController">
     <MenuBar fx:id="menuBar">
-            <Menu fx:id="lectureMenu" text="Lektionen"/>
-            <Menu fx:id="exerciseMenu" text="Übungen"/>
-            <Menu fx:id="testMenu" text="Klausur"/>
+            <Menu fx:id="lectureMenu"/>
+            <Menu fx:id="exerciseMenu"/>
+            <Menu fx:id="testMenu"/>
     </MenuBar>
+    <fx:include source="masterdetail.fxml" fx:id="masterdetail"/>
 </VBox>

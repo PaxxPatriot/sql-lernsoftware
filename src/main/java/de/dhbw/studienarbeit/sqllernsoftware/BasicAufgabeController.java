@@ -18,8 +18,8 @@ public class BasicAufgabeController {
 
 
     public void initialize() throws IOException {
-        exerciseTitel.setText(exerciseCollection.getTitel());
-        exerciseDescription.setText(exerciseCollection.getBeschreibung());
+        //exerciseTitel.setText(exerciseCollection.getTitel());
+        //exerciseDescription.setText(exerciseCollection.getBeschreibung());
 
     }
 
