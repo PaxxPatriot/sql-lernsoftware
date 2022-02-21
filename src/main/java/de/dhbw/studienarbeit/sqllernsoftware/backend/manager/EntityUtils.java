@@ -4,11 +4,7 @@ import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentar;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 import de.dhbw.studienarbeit.sqllernsoftware.datenbasis.DatenbasisController;
 
-import java.sql.ResultSet;
-
 public class EntityUtils {
-	
-	DatenbasisController dbCntrl = new DatenbasisController();
 	
 	public EntityUtils() {
 
@@ -20,15 +16,18 @@ public class EntityUtils {
 	//
 
 	public ErgebnisKommentar getKommentar(Aufgabe aufgabe, String userInput) {
-		return this.getDBKommentar(aufgabe, userInput).getKommentar();
+		ErgebnisKommentar kommentar = this.getDBKommentar(aufgabe, userInput).getKommentar();
+		if (kommentar == null) {
+			return ErgebnisKommentar.ERROR;
+		}
+		return kommentar;
 	}
 	
 	private DBErgebnisKommentar getDBKommentar(Aufgabe aufgabe, String userInput) {
-		ResultSet[] dbResult = dbCntrl.executeAbfrageUndMusterloesung(aufgabe.getMusterloesung(), userInput,aufgabe.getAufgabenkollektion().getDatenbank());
-		DBErgebnisKommentar dbErgebnisKommentar = new DBErgebnisKommentar(new DBErgebnisAusgabe(dbResult[1]), new DBErgebnisAusgabe(dbResult[0]), aufgabe, userInput);
-		return dbErgebnisKommentar;
+		DBErgebnisAusgabe[] dbResult = DatenbasisController.executeAbfrageUndMusterloesung(aufgabe.getTyp(), aufgabe.getMusterloesung(), userInput, aufgabe.getPruefungsbefehl(), aufgabe.getAufgabenkollektion().getDatenbank());
+		return new DBErgebnisKommentar(dbResult[1], dbResult[0], aufgabe, userInput);
 	}
-	
+
 	public AusgabeKommentar getAusgabeKommentar(Aufgabe aufgabe, String userInput) {
 		return this.getDBKommentar(aufgabe, userInput).getAusgabeKommentar();
 	}

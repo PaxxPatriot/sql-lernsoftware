@@ -29,7 +29,7 @@ public class AppdataController {
         return jpqlQuery.getResultList();
     }
 
-    public Aufgabenkollektion getAufgabenkollektionById(Long id) {
+    public Aufgabenkollektion getAufgabenkollektionById(String id) {
         TypedQuery<Aufgabenkollektion> jpqlQuery = getEntityManager().createQuery("SELECT a FROM Aufgabenkollektion a WHERE a.id=:id", Aufgabenkollektion.class);
         jpqlQuery.setParameter("id", id);
         return jpqlQuery.getSingleResult();

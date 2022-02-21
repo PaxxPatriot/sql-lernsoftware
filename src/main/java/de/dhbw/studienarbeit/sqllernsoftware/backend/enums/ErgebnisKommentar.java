@@ -1,6 +1,7 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.enums;
 
 public enum ErgebnisKommentar {
+	ERROR("Bei der Verarbeitung ist ein Fehler aufgetreten."),
 	M("Musterlösung!!!"),
 	E("Ergebnis ist gleich."),
 	Z("Im Erbgebnis befinden sich überschüssige Einträge:"),

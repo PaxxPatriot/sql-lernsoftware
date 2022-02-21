@@ -17,8 +17,8 @@ public class LektionsInhaltText extends LektionsInhalt {
 	private String text;
 	
 
-public LektionsInhaltText(Long id, Lektion lektion, int reihenfolge, String ueberschrift,
-			String text) {
+public LektionsInhaltText(String id, Lektion lektion, int reihenfolge, String ueberschrift,
+						  String text) {
 		super(id, Inhaltstyp.A, lektion, reihenfolge);
 		this.ueberschrift = ueberschrift;
 		this.text = text;

@@ -1,22 +1,23 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class ObjektMitId {
 
 	@Id
-	private Long id;
+	private String id;
 	
-	public ObjektMitId(Long id) {
+	public ObjektMitId(String id) {
 		this.id = id;
 	}
-	
-	public Long getId() {
+
+	public ObjektMitId() {
+
+	}
+
+	public String getId() {
 		return id;
 	}
 	public String getUIString() {

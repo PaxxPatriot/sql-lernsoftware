@@ -19,7 +19,7 @@ public class Lektion extends ObjektMitId {
 	private List<LektionsInhalt> inhalte;
 	
 	
-	public Lektion(long id, String titel, String beschreibung) {
+	public Lektion(String id, String titel, String beschreibung) {
 		super(id);
 		this.titel = titel;
 		this.beschreibung = beschreibung;
