@@ -48,7 +48,8 @@ public class MasterdetailController {
         for (Aufgabenkollektion aufgabenkollektion : exerciseList) {
             titles.add(aufgabenkollektion.getTitel());
         }
-        ObservableList<String> observableList = FXCollections.observableList(titles);
+        ObservableList<Aufgabenkollektion> observableList = FXCollections.observableList(this.exerciseList);
+        listView.setCellFactory(new AufgabenCellFactory());
         listView.setItems(observableList);
         listView.refresh();
 
