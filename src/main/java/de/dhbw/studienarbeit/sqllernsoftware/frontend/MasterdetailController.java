@@ -1,4 +1,4 @@
-package de.dhbw.studienarbeit.sqllernsoftware;
+package de.dhbw.studienarbeit.sqllernsoftware.frontend;
 
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
@@ -15,7 +15,12 @@ import java.util.List;
 public class MasterdetailController {
 
     @FXML
-    private ListView<String> listView = new ListView<>();
+    private ListView listView = new ListView();
+
+    @FXML
+    private void clickedListElement() {
+        Object selectedItem = listView.getSelectionModel().getSelectedItem();
+    }
 
     private List<Aufgabenkollektion> exerciseList;
     private List<Lektion> lectureList;
@@ -60,7 +65,8 @@ public class MasterdetailController {
             titles.add(lektion.getTitel());
         }
 
-        ObservableList<String> observableList = FXCollections.observableList(titles);
+        ObservableList<Lektion> observableList = FXCollections.observableList(this.lectureList);
+        listView.setCellFactory(new LektionCellFactory());
         listView.setItems(observableList);
         listView.refresh();
     }

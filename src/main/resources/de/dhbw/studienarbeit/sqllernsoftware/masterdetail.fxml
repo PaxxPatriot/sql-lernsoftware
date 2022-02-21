@@ -8,10 +8,10 @@
 
 <BorderPane
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="de.dhbw.studienarbeit.sqllernsoftware.MasterdetailController"
+            fx:controller="de.dhbw.studienarbeit.sqllernsoftware.frontend.MasterdetailController"
             >
     <left>
-        <ListView fx:id="listView"/>
+        <ListView fx:id="listView" onMouseClicked="#clickedListElement"/>
     </left>
 
 </BorderPane>

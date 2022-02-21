@@ -5,7 +5,7 @@
 <?import javafx.scene.control.Menu?>
 
 <VBox fx:id="root" id="vBoxBase" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="de.dhbw.studienarbeit.sqllernsoftware.HelloController">
+      fx:controller="de.dhbw.studienarbeit.sqllernsoftware.frontend.HelloController">
     <MenuBar fx:id="menuBar">
             <Menu fx:id="lectureMenu"/>
             <Menu fx:id="exerciseMenu"/>

@@ -1,26 +1,16 @@
-package de.dhbw.studienarbeit.sqllernsoftware;
+package de.dhbw.studienarbeit.sqllernsoftware.frontend;
 
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import de.dhbw.studienarbeit.sqllernsoftware.persistence.AppdataController;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import org.hibernate.tool.schema.Action;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class HelloController {

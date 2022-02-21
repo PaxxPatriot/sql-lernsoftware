@@ -12,4 +12,6 @@ module de.dhbw.studienarbeit.sqllernsoftware {
     opens de.dhbw.studienarbeit.sqllernsoftware.persistence;
     exports de.dhbw.studienarbeit.sqllernsoftware;
     opens de.dhbw.studienarbeit.sqllernsoftware.datenbasis;
+    exports de.dhbw.studienarbeit.sqllernsoftware.frontend;
+    opens de.dhbw.studienarbeit.sqllernsoftware.frontend to javafx.fxml;
 }
