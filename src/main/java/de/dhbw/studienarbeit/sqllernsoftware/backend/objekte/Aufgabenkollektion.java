@@ -77,5 +77,12 @@ public class Aufgabenkollektion extends ObjektMitId {
 	public String getDatenbank() {
 		return datenbank;
 	}
-
+	@Override
+	public String getUITitel() {
+		return titel;
+	}
+	@Override
+	public String getUIBeschreibung() {
+		return beschreibung;
+	}
 }

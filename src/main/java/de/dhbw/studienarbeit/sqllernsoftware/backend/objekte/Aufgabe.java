@@ -78,8 +78,11 @@ public class Aufgabe extends ObjektMitId {
 		return aufgabenkollektionId;
 	}
 	@Override
-	public String getUIString() {
+	public String getUITitel() {
+		return titel;
+	}
+	@Override
+	public String getUIBeschreibung() {
 		return aufgabentext;
 	}
-	
 }
