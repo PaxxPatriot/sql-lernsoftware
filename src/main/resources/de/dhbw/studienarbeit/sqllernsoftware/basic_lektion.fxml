@@ -6,10 +6,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<Pane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0" fx:id="lectureAP">
-    <Label fx:id="lectureTitel"/>
+            fx:id="lecturePane">
 
-    <Label fx:id="lectureDescription"/>
-</AnchorPane>
+    <Label text="Lektion\n"/>
+    <Label fx:id="titel"/>
+    <Label fx:id="description"/>
+</Pane>

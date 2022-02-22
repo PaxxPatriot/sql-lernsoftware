@@ -9,7 +9,9 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             prefHeight="400.0" prefWidth="600.0" fx:id="exerciseAP">
-    <Label fx:id="exerciseTitel"/>
-    <Label fx:id="exerciseDescription"/>
+
+    <Label text="Aufgabe\n"/>
+    <Label fx:id="titel"/>
+    <Label fx:id="description"/>
 
 </AnchorPane>

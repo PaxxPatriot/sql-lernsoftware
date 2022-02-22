@@ -18,7 +18,7 @@ public class ObjectCellFactory implements Callback<ListView<ObjektMitId>, ListCe
                 if (empty || objektMitId == null) {
                     setText(null);
                 } else {
-                    setText(objektMitId.toString());
+                    setText(objektMitId.getUITitel());
                 }
 
                 setOnMouseClicked((MouseEvent event) -> {

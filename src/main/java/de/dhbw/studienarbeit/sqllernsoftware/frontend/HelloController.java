@@ -100,12 +100,13 @@ public class HelloController {
         }
 
         root.getChildren().add(AufgabenManager); */
+        masterdetailController.clearDetailpage();
         masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) exercisecollectionList);
 
     }
 
     public void gotoLecture(ActionEvent event) throws IOException {
-        //FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("basic_lecture.fxml"));
+        //FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("basic_lektion.fxml"));
         //BasicLectureController lectureController = new BasicLectureController();
 
         //loader.setController(lectureController);
@@ -124,6 +125,7 @@ public class HelloController {
         }
 
         root.getChildren().add(LektionenManager); */
+        masterdetailController.clearDetailpage();
         masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) lectureList);
 
     }
