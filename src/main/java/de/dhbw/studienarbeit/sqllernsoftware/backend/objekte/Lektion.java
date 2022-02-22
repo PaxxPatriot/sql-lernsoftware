@@ -52,5 +52,13 @@ public class Lektion extends ObjektMitId {
 		}
 		return tmp;	
 	}
+	@Override
+	public String getUITitel() {
+		return titel;
+	}
+	@Override
+	public String getUIBeschreibung() {
+		return beschreibung;
+	}
 	
 }
