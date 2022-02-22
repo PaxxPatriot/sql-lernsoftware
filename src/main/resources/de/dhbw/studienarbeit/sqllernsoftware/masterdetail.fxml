@@ -13,5 +13,7 @@
     <left>
         <ListView fx:id="listView" onMouseClicked="#clickedListElement"/>
     </left>
+    <center>
+    </center>
 
 </BorderPane>

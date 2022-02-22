@@ -2,6 +2,7 @@ package de.dhbw.studienarbeit.sqllernsoftware.frontend;
 
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.ObjektMitId;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -99,7 +100,7 @@ public class HelloController {
         }
 
         root.getChildren().add(AufgabenManager); */
-        masterdetailController.setExerciseList(exercisecollectionList);
+        masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) exercisecollectionList);
 
     }
 
@@ -123,7 +124,7 @@ public class HelloController {
         }
 
         root.getChildren().add(LektionenManager); */
-        masterdetailController.setLectureList(lectureList);
+        masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) lectureList);
 
     }
 
