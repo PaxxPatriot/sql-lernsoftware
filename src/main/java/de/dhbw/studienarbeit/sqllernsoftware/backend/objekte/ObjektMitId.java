@@ -20,7 +20,10 @@ public abstract class ObjektMitId {
 	public String getId() {
 		return id;
 	}
-	public String getUIString() {
+	public String getUITitel() {
 		return "null";
+	}
+	public String getUIBeschreibung() {
+		return "null, du null";
 	}
 }
