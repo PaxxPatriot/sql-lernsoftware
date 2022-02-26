@@ -6,11 +6,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:id="lecturePane">
+<?import javafx.scene.text.TextFlow?>
 
-    <Label text="Lektion\n"/>
-    <Label fx:id="titel"/>
-    <Label fx:id="description"/>
-</Pane>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:id="lecturePane">
+    <Label fx:id="title" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <TextFlow fx:id="textFlow" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+</GridPane>

@@ -6,15 +6,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane
+<AnchorPane
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="de.dhbw.studienarbeit.sqllernsoftware.frontend.MasterdetailController"
-            >
-    <left>
-        <ListView fx:id="listView" onMouseClicked="#clickedListElement"/>
-    </left>
-    <center>
-        <fx:include source="basicdetailpage.fxml" fx:id="basicdetailpage"/>
-    </center>
+            fx:id="masterdetailanchor">
 
-</BorderPane>
+    <ListView fx:id="listView" onMouseClicked="#clickedListElement"/>
+
+
+    <fx:include source="basicdetailpage.fxml" fx:id="basicdetailpage"/>
+
+</AnchorPane>

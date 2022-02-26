@@ -4,20 +4,22 @@ import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.ObjektMitId;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 public class BasicLektionController {
 
     private Lektion lektion;
 
     @FXML
-    Label titel;
+    Label title;
 
     @FXML
-    Label description;
+    TextFlow textFlow;
 
     public void build() {
-        titel.setText(lektion.getTitel());
-        description.setText(lektion.getBeschreibung()+"\n");
+        title.setText(lektion.getTitel());
+        textFlow.getChildren().add(new Text(lektion.getBeschreibung()));
     }
 
     public Lektion getLektion() {

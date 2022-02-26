@@ -8,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +18,13 @@ import java.util.List;
 public class MasterdetailController {
 
     @FXML
+    Pane basicdetailpage;
+
+    @FXML
     BasicDetailpageController basicdetailpageController;
+
+    @FXML
+    AnchorPane masterdetailanchor;
 
     @FXML
     private ListView listView = new ListView();
@@ -37,6 +45,12 @@ public class MasterdetailController {
     private List<ObjektMitId> objektMitIdList;
 
     public void initialize() {
+        listView.setPrefHeight(1250.0);
+        AnchorPane.setTopAnchor(listView, 3.0);
+        AnchorPane.setLeftAnchor(listView, 4.0);
+        AnchorPane.setBottomAnchor(listView, 5.0);
+        AnchorPane.setLeftAnchor(basicdetailpage, 260.0);
+        AnchorPane.setTopAnchor(basicdetailpage, 5.0);
     }
 
     public ListView<String> getListView() {

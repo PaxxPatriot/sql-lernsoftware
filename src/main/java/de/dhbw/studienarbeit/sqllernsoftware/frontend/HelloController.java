@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import de.dhbw.studienarbeit.sqllernsoftware.persistence.AppdataController;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,19 +19,13 @@ public class HelloController {
     private List<Aufgabenkollektion> exercisecollectionList;
 
     @FXML
-    private VBox root;
-
-
-    @FXML
     private Menu lectureMenu;
-
 
     @FXML
     private Menu exerciseMenu;
 
     @FXML
     private MasterdetailController masterdetailController;
-
 
     @FXML
     public void initialize() throws IOException {

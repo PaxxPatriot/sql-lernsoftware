@@ -6,12 +6,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<GridPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0" fx:id="exerciseAP">
+            prefHeight="400.0" prefWidth="600.0" fx:id="exercisePane">
 
-    <Label text="Aufgabe\n"/>
-    <Label fx:id="titel"/>
-    <Label fx:id="description"/>
+    <Label fx:id="title" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <Label fx:id="description" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
 
-</AnchorPane>
+</GridPane>
