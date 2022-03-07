@@ -1,7 +1,7 @@
 package de.dhbw.studienarbeit.sqllernsoftware.datenbasis;
 
 import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Aufgabentyp;
-import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.DBErgebnisAusgabe;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.DBErgebnisTranskript;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,10 +13,10 @@ import java.util.logging.Logger;
 public class DatenbasisController {
     private static final Logger logger = Logger.getLogger("de.dhbw.studienarbeit.sqllernsoftware.datenbasis.DatenbasisController");
 
-    private static DBErgebnisAusgabe executeQueryOnDatabase(String query, String datenbankPfad) throws SQLException {
+    private static DBErgebnisTranskript executeQueryOnDatabase(String query, String datenbankPfad) throws SQLException {
         try (Connection conn = DriverManager.getConnection(datenbankPfad)) {
             Statement stmt = conn.createStatement();
-            return new DBErgebnisAusgabe(stmt.executeQuery(query));
+            return new DBErgebnisTranskript(stmt.executeQuery(query));
         }
     }
 
@@ -27,8 +27,8 @@ public class DatenbasisController {
         }
     }
 
-    public static DBErgebnisAusgabe[] executeAbfrageUndMusterloesung(Aufgabentyp aufgabentyp, String userQuery, String loesungQuery, String pruefungsQuery, String datenbankPfad) {
-        DBErgebnisAusgabe[] abfrageUndLoesung = new DBErgebnisAusgabe[2];
+    public static DBErgebnisTranskript[] executeAbfrageUndMusterloesung(Aufgabentyp aufgabentyp, String userQuery, String loesungQuery, String pruefungsQuery, String datenbankPfad) {
+        DBErgebnisTranskript[] abfrageUndLoesung = new DBErgebnisTranskript[2];
         String url = String.format("jdbc:sqlite:%s", datenbankPfad);
         switch (aufgabentyp) {
             case S -> {

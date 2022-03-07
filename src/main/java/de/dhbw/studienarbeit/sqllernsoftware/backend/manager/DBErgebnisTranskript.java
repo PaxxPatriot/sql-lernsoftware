@@ -4,14 +4,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DBErgebnisAusgabe {
+public class DBErgebnisTranskript {
 
 	ResultSet result = null;
 
 	ArrayList<String> columnHeads = new ArrayList<String>();
 	ArrayList<String> transcribeResult = new ArrayList<String>();
 
-	public DBErgebnisAusgabe(ResultSet result) {
+	public DBErgebnisTranskript(ResultSet result) {
 		super();
 		this.result = result;
 		
@@ -30,7 +30,6 @@ public class DBErgebnisAusgabe {
 				columnHeads.add(result.getMetaData().getColumnLabel(i));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

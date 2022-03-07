@@ -1,6 +1,6 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.enums;
 
-public enum ErgebnisKommentar {
+public enum ErgebnisKommentarType {
 	ERROR("Bei der Verarbeitung ist ein Fehler aufgetreten."),
 	M("Musterlösung!!!"),
 	E("Ergebnis ist gleich."),
@@ -10,7 +10,7 @@ public enum ErgebnisKommentar {
 //usw
 	private String anzeigeText;
 		
-	ErgebnisKommentar(String anzeigeText)
+	ErgebnisKommentarType(String anzeigeText)
 	{
 		this.anzeigeText = anzeigeText;
 	}
