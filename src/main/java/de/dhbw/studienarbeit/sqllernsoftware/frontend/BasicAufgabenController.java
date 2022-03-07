@@ -1,18 +1,27 @@
 package de.dhbw.studienarbeit.sqllernsoftware.frontend;
 
+import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.EntityUtils;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import org.hibernate.tool.schema.Action;
 
 public class BasicAufgabenController {
 
     private Aufgabenkollektion aufgabenkollektion;
+
+    EntityUtils entityUtils = new EntityUtils();
 
     @FXML
     GridPane exercisePane;
@@ -42,6 +51,16 @@ public class BasicAufgabenController {
 
             TextField textField = new TextField();
             vbox.getChildren().add(textField);
+
+            Button button = new Button("Prüfen");
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent e) {
+                    entityUtils.getKommentar(aufgabe, textField.getText());
+                }
+            }
+            );
+            vbox.getChildren().add(button);
 
             exercisePane.add(vbox, 0, row);
             row++;
