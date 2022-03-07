@@ -1,14 +1,14 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.manager;
 
-import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentar;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentarType;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 
 import java.util.ArrayList;
 
 public class DBErgebnisKommentar {
 
-	private DBErgebnisAusgabe userResult = null;
-	private DBErgebnisAusgabe correctResult = null;
+	private DBErgebnisTranskript userResult = null;
+	private DBErgebnisTranskript correctResult = null;
 	
 	private ArrayList<String> excessRows = new ArrayList<String>();
 	private ArrayList<String> missingRows = new ArrayList<String>();
@@ -16,11 +16,11 @@ public class DBErgebnisKommentar {
 	private Aufgabe aufgabe = null;
 	private String userInput = null;
 	private int numberArgument = 0;
-	private ErgebnisKommentar comment= null;
+	private ErgebnisKommentarType comment= null;
 	
 
 	
-	public DBErgebnisKommentar(DBErgebnisAusgabe userResult, DBErgebnisAusgabe correctResult, Aufgabe aufgabe,
+	public DBErgebnisKommentar(DBErgebnisTranskript userResult, DBErgebnisTranskript correctResult, Aufgabe aufgabe,
 			String userInput) {
 		super();
 		this.userResult = userResult;
@@ -29,8 +29,8 @@ public class DBErgebnisKommentar {
 		this.userInput = userInput;
 	}
 
-	public AusgabeKommentar getAusgabeKommentar() {
-		AusgabeKommentar ausgabe = new AusgabeKommentar(this.getKommentar());
+	public KommentarAusgabeText getAusgabeKommentar() {
+		KommentarAusgabeText ausgabe = new KommentarAusgabeText(this.getKommentar());
 		
 		if(numberArgument != 0) {
 			ausgabe.addArgument(numberArgument+"");
@@ -38,34 +38,34 @@ public class DBErgebnisKommentar {
 		return ausgabe;
 	}
 
-	public ErgebnisKommentar getKommentar() {
+	public ErgebnisKommentarType getKommentar() {
 		
 		if(aufgabe.getMusterloesung().equalsIgnoreCase(userInput)) {
-			return setComment(ErgebnisKommentar.M);
+			return setComment(ErgebnisKommentarType.M);
 		}
 		if(!matchingColumnsNumber()) {
-			return setComment(ErgebnisKommentar.C);
+			return setComment(ErgebnisKommentarType.C);
 		}
 
 		this.calculateExcessRows();
 		this.calculateMissingRows();
 
 		if(missingRows.size() == 0 && excessRows.size() == 0) {
-			return setComment(ErgebnisKommentar.E);
+			return setComment(ErgebnisKommentarType.E);
 		}
 		if(missingRows.size() > 0) {
 			numberArgument = missingRows.size();
-			return setComment(ErgebnisKommentar.F);
+			return setComment(ErgebnisKommentarType.F);
 		}
 		if(excessRows.size() > 0) {
 			numberArgument = excessRows.size();
-			return setComment(ErgebnisKommentar.Z);
+			return setComment(ErgebnisKommentarType.Z);
 		}
 		return comment;
 
 	}
 	
-	private ErgebnisKommentar setComment(ErgebnisKommentar r) {
+	private ErgebnisKommentarType setComment(ErgebnisKommentarType r) {
 		comment = r;
 		return comment;
 	}

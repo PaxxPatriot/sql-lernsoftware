@@ -2,14 +2,14 @@ package de.dhbw.studienarbeit.sqllernsoftware.backend.manager;
 
 import java.util.ArrayList;
 
-import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentar;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentarType;
 
-public class AusgabeKommentar {
+public class KommentarAusgabeText {
 
-	private ErgebnisKommentar kommentar = null;
+	private ErgebnisKommentarType kommentar = null;
 	private ArrayList<String> args = new ArrayList<String>();
 	
-	public AusgabeKommentar(ErgebnisKommentar kommentar) {
+	public KommentarAusgabeText(ErgebnisKommentarType kommentar) {
 		super();
 		this.kommentar = kommentar;
 	}
