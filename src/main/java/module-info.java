@@ -5,6 +5,8 @@ module de.dhbw.studienarbeit.sqllernsoftware {
     requires java.sql;
     requires org.hibernate.orm.core;
 	requires java.xml;
+	requires org.junit.jupiter.api;
+	requires org.mockito;
 
 
     opens de.dhbw.studienarbeit.sqllernsoftware to javafx.fxml;
