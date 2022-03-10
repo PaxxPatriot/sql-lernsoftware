@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.UUID;
 import java.util.logging.Logger;
 
-public class DatenbasisController {
+public class DatenbasisController implements Datenbasis {
     private static final Logger logger = Logger.getLogger("de.dhbw.studienarbeit.sqllernsoftware.datenbasis.DatenbasisController");
 
     private static DBErgebnisTranskript executeQueryOnDatabase(String query, String datenbankPfad) throws SQLException {
@@ -27,7 +27,7 @@ public class DatenbasisController {
         }
     }
 
-    public static DBErgebnisTranskript[] executeAbfrageUndMusterloesung(Aufgabentyp aufgabentyp, String userQuery, String loesungQuery, String pruefungsQuery, String datenbankPfad) {
+    public DBErgebnisTranskript[] executeAbfrageUndMusterloesung(Aufgabentyp aufgabentyp, String userQuery, String loesungQuery, String pruefungsQuery, String datenbankPfad) {
         DBErgebnisTranskript[] abfrageUndLoesung = new DBErgebnisTranskript[2];
         String url = String.format("jdbc:sqlite:%s", datenbankPfad);
         switch (aufgabentyp) {
@@ -61,7 +61,7 @@ public class DatenbasisController {
         return null;
     }
 
-    public static String copyDatenbasis() {
+    public String copyDatenbasis() {
         String url = createNewDb();
         try (Connection conn = DriverManager.getConnection(url)) {
             importSQL(conn, new File("data/hochschule-schema.sql"));
@@ -88,7 +88,7 @@ public class DatenbasisController {
         return "";
     }
 
-    public static void importSQL(Connection conn, File in) {
+    public void importSQL(Connection conn, File in) {
         try {
             Scanner s = new Scanner(in);
             s.useDelimiter("(;(\r)?\n)|(--\n)");

@@ -15,7 +15,7 @@ public class EntityUtils {
 	//von WIssensfragen
 	//
 
-	public ErgebnisKommentarType getKommentar(Aufgabe aufgabe, String userInput) {
+	public ErgebnisKommentarType getKommentarType(Aufgabe aufgabe, String userInput) {
 		ErgebnisKommentarType kommentar = this.getDBKommentar(aufgabe, userInput).getKommentar();
 		if (kommentar == null) {
 			return ErgebnisKommentarType.ERROR;
@@ -24,7 +24,8 @@ public class EntityUtils {
 	}
 	
 	private DBErgebnisKommentar getDBKommentar(Aufgabe aufgabe, String userInput) {
-		DBErgebnisTranskript[] dbResult = DatenbasisController.executeAbfrageUndMusterloesung(aufgabe.getTyp(), aufgabe.getMusterloesung(), userInput, aufgabe.getPruefungsbefehl(), aufgabe.getAufgabenkollektion().getDatenbank());
+		DatenbasisController datenbasisController = new DatenbasisController();
+		DBErgebnisTranskript[] dbResult = datenbasisController.executeAbfrageUndMusterloesung(aufgabe.getTyp(), aufgabe.getMusterloesung(), userInput, aufgabe.getPruefungsbefehl(), aufgabe.getAufgabenkollektion().getDatenbank());
 		return new DBErgebnisKommentar(dbResult[1], dbResult[0], aufgabe, userInput);
 	}
 
