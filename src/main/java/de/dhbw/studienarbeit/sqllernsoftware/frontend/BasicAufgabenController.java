@@ -39,7 +39,6 @@ public class BasicAufgabenController {
         Integer row = 2;
 
         for (Aufgabe aufgabe : aufgabenkollektion.getAufgabenliste()) {
-            System.out.println(aufgabe.getTitel());
             VBox vbox = new VBox();
             vbox.setPadding(new Insets(10));
             vbox.setSpacing(10);

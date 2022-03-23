@@ -26,7 +26,6 @@ public class BasicDetailpageController {
 
         basePane.getChildren().add(lektionElemente);
         basicLektionController.build();
-        System.out.println("Successfully loaded Lektion-Detailpage!");
     }
 
     public void setExercisePage(ObjektMitId object) throws IOException {
@@ -39,7 +38,6 @@ public class BasicDetailpageController {
 
         basePane.getChildren().add(lektionElemente);
         basicAufgabenController.build();
-        System.out.println("Successfully loaded Aufgaben-Detailpage!");
     }
 
     public void clearDetailpage() {

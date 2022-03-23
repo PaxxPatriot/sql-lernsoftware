@@ -32,12 +32,9 @@ public class MasterdetailController {
     @FXML
     private void clickedListElement() throws IOException {
         ObjektMitId selectedItem = (ObjektMitId) listView.getSelectionModel().getSelectedItem();
-        System.out.println("selectedItem-Type: "+ selectedItem.getClass());
         if (selectedItem instanceof Lektion) {
-            System.out.println("Current ListView is of type Lektion");
             basicdetailpageController.setLecturePage(selectedItem);
         } else if (selectedItem instanceof Aufgabenkollektion) {
-            System.out.println("Current ListView is of type Aufgabe");
             basicdetailpageController.setExercisePage(selectedItem);
         }
     }
