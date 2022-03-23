@@ -5,6 +5,7 @@ module de.dhbw.studienarbeit.sqllernsoftware {
     requires java.sql;
     requires org.hibernate.orm.core;
 	requires java.xml;
+    requires javafx.web;
 
 
     opens de.dhbw.studienarbeit.sqllernsoftware to javafx.fxml;

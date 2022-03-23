@@ -1,11 +1,11 @@
 package de.dhbw.studienarbeit.sqllernsoftware.frontend;
 
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
-import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.ObjektMitId;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.scene.web.WebView;
+
 
 public class BasicLektionController {
 
@@ -17,9 +17,12 @@ public class BasicLektionController {
     @FXML
     TextFlow textFlow;
 
+    @FXML
+    WebView webView;
+
     public void build() {
         title.setText(lektion.getTitel());
-        textFlow.getChildren().add(new Text(lektion.getBeschreibung()));
+        webView.getEngine().loadContent(lektion.getBeschreibung());
     }
 
     public Lektion getLektion() {
