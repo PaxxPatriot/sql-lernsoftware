@@ -72,11 +72,17 @@ public class DBErgebnisKommentar {
 	
 	
 	public boolean matchingColumnsNumber() {
-		return userResult.getColumnHeads().size() == correctResult.getColumnHeads().size();
+		if (userResult != null) {
+			return userResult.getColumnHeads().size() == correctResult.getColumnHeads().size() || (userResult != null);
+		}
+		return false;
 	}	
 	
 	public int sameRowAmount() {
-		return userResult.getTranscribeResult().size() - correctResult.getTranscribeResult().size();
+		if (userResult != null) {
+			return userResult.getTranscribeResult().size() - correctResult.getTranscribeResult().size();
+		}
+		return 0;
 	}
 	
 	private void calculateExcessRows() {

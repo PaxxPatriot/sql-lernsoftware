@@ -35,10 +35,11 @@ public class DatenbasisController {
                 try {
                     abfrageUndLoesung[0] = executeQueryOnDatabase(userQuery, url);
                     abfrageUndLoesung[1] = executeQueryOnDatabase(loesungQuery, url);
-                    return abfrageUndLoesung;
+                    //return abfrageUndLoesung;
                 } catch (SQLException e) {
                     logger.warning(e.getMessage());
                 }
+                return abfrageUndLoesung;
             }
             case C, D, U -> {
                 String url_user = copyDatenbasis();
@@ -48,7 +49,7 @@ public class DatenbasisController {
                     executeUpdateOnDatabase(loesungQuery, url_muster);
                     abfrageUndLoesung[0] = executeQueryOnDatabase(pruefungsQuery, url_user);
                     abfrageUndLoesung[1] = executeQueryOnDatabase(pruefungsQuery, url_muster);
-                    return abfrageUndLoesung;
+                    //return abfrageUndLoesung;
                 } catch (SQLException e) {
                     logger.warning(e.getMessage());
                 } finally {
@@ -56,6 +57,7 @@ public class DatenbasisController {
                     new File(url_user.substring(12)).delete();
                     new File(url_muster.substring(12)).delete();
                 }
+                return abfrageUndLoesung;
             }
         }
         return null;

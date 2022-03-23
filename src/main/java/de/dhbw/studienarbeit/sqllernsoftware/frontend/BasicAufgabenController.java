@@ -51,6 +51,8 @@ public class BasicAufgabenController {
 
             TextField textField = new TextField();
             vbox.getChildren().add(textField);
+            TextField revealField = new TextField();
+            revealField.setVisible(false);
 
             Button button = new Button("Prüfen");
             button.setOnAction(new EventHandler<ActionEvent>() {
@@ -61,6 +63,17 @@ public class BasicAufgabenController {
             }
             );
             vbox.getChildren().add(button);
+
+            Button buttonReveal = new Button("Anzeigen");
+            buttonReveal.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    revealField.setText(aufgabe.getMusterloesung());
+                    revealField.setVisible(true);
+                }
+            });
+            vbox.getChildren().add(buttonReveal);
+            vbox.getChildren().add(revealField);
 
             exercisePane.add(vbox, 0, row);
             row++;
