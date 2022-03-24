@@ -1,3 +1,8 @@
+package test.backend;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.Aufgabentyp;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.DBErgebnisKommentar;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.DBErgebnisTranskript;
@@ -28,5 +33,27 @@ public class EntityUtilsTests {
         new DBErgebnisKommentar(dbResult[1], dbResult[0], aufgabe, userInput);
 
         EasyMock.verify(datenbasisController);
+    }
+    
+    void testDBErgebnisTranskriptCreation() throws SQLException {
+    	String[] values1 = {"Some", "Example", "Writing"};
+    	
+    	 ResultSet mockResultSet = createMockResultSet(values1);
+    	 
+    	
+         
+    }
+    
+    public ResultSet createMockResultSet(String[] values) throws SQLException {
+    	 ResultSet mockResultSet = EasyMock.createMock(ResultSet.class);  // 1
+    	 EasyMock.expect(mockResultSet.getMetaData().getColumnCount()).andReturn(1);
+    	 EasyMock.expect(mockResultSet.getMetaData().getColumnLabel(0)).andReturn("0");
+    	 for(int i = 0; i < values.length;i++) {
+    		   EasyMock.expect(mockResultSet.next()).andReturn(true);
+    		   EasyMock.expect(mockResultSet.getString("0")).andReturn(values[i]);
+    	 }      
+         EasyMock.expect(mockResultSet.next()).andReturn(false); 
+         EasyMock.replay(mockResultSet);
+    	 return mockResultSet;
     }
 }
