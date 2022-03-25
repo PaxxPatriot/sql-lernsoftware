@@ -1,8 +1,10 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.manager;
 
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.StringJoiner;
 
 public class DBErgebnisTranskript {
 
@@ -26,8 +28,11 @@ public class DBErgebnisTranskript {
 	
 	private void getColumns() {
 		try {
-			for(int i = 1 ; i <= result.getMetaData().getColumnCount();i++) {
-				columnHeads.add(result.getMetaData().getColumnLabel(i));
+			ResultSetMetaData metaData = result.getMetaData();
+			int columnCount =  metaData.getColumnCount();
+			
+			for(int i = 1 ; i <= columnCount;i++) {
+				columnHeads.add(metaData.getColumnLabel(i));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -36,12 +41,12 @@ public class DBErgebnisTranskript {
 	private void transcribe() {
 		try {
 			while(result.next()) {
-				String row  = "";
+				StringJoiner joiner = new StringJoiner(",");
 				
-				for(String label: columnHeads) {
-					row += result.getString(label) + ";";
+				for(String label: columnHeads) {	
+					joiner.add(result.getString(label));
 				}
-				transcribeResult.add(row);
+				transcribeResult.add(joiner.toString());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
