@@ -80,20 +80,31 @@ public class DBErgebnisKommentar {
 	}
 	
 	private void calculateExcessRows() {
-		for(String i: userResult.getTranscribeResult()) {
-			if(!(correctResult.getTranscribeResult().contains(i))) {
+		excessRows.clear();
+		
+		ArrayList<String>userResultRows = userResult.getTranscribeResult();
+		ArrayList<String>correctResultRows = correctResult.getTranscribeResult();
+
+		for(String i: userResultRows) {
+			if(!(correctResultRows.contains(i))) {
 				excessRows.add(i);
 			}
 		}
 	}
 	private void calculateMissingRows() {
-		for(String i: correctResult.getTranscribeResult()) {
-			if(!(userResult.getTranscribeResult().contains(i))) {
+		missingRows.clear();
+		
+		ArrayList<String>userResultRows = userResult.getTranscribeResult();
+		ArrayList<String>correctResultRows = correctResult.getTranscribeResult();
+		for(String i: correctResultRows) {
+			if(!(userResultRows.contains(i))) {
 				missingRows.add(i);
 			}
 		}
 	}
-	
+	public int getNumberArgument() {
+		return numberArgument;
+	}
 	public int getExcessRowsCount() {
 		return excessRows.size();
 	}
