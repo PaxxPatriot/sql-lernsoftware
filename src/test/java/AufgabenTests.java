@@ -1,5 +1,3 @@
-package test.backend.objekte;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.easymock.EasyMock;
