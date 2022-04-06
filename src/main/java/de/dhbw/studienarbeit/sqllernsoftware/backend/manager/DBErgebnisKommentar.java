@@ -50,12 +50,15 @@ public class DBErgebnisKommentar {
 
 	}
 	
-	private ErgebnisKommentarType setComment(ErgebnisKommentarType r) {
+	private void  setComment(ErgebnisKommentarType r) {
 		comment = r;
-		return comment;
 	}
 	
 	
+	public ErgebnisKommentarType getKommentarType() {
+		return comment;
+	}
+
 	public boolean matchingColumnsNumber() {
 		return userResult.getColumnHeads().size() == correctResult.getColumnHeads().size();
 	}	
