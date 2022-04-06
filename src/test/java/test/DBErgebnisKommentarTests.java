@@ -1,3 +1,5 @@
+package test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentarType;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.DBErgebnisKommentar;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.DBErgebnisTranskript;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.KommentarAusgabeText;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 
 public class DBErgebnisKommentarTests {
@@ -25,8 +28,9 @@ public class DBErgebnisKommentarTests {
 		DBErgebnisTranskript et2 = createMockDBErgebnisTranscript(columnHeads1, rows1);
 
 		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(et1, et2, aufgabe, userInput);
-		assertEquals(kommentar.getKommentar(), ErgebnisKommentarType.M);
-		assertEquals(kommentar.getAusgabeKommentar().getOutput(),ErgebnisKommentarType.M.anzeigeText());
+		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
+		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.M);
+		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.M.anzeigeText());
 	}
 	@Test
 	public void testDBErgebnisKommentarTypeC(){
@@ -42,9 +46,25 @@ public class DBErgebnisKommentarTests {
 		DBErgebnisTranskript et2 = createMockDBErgebnisTranscript(columnHeads2, rows1);
 
 		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(et1, et2, aufgabe, userInput);
-		assertEquals(kommentar.getKommentar(), ErgebnisKommentarType.C);
-		assertEquals(kommentar.getAusgabeKommentar().getOutput(),ErgebnisKommentarType.C.anzeigeText());
+		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
+		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.C);
+		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.C.anzeigeText());
 	
+	}
+	@Test
+	public void testDBErgebnisKommentarTypeL(){
+		String userInput = "";
+		Aufgabe aufgabe = createMockAufgabe(userInput);
+		ArrayList<String> columnHeads1 = new ArrayList<String>(Arrays.asList("These", "Are" , "Rows"));
+		ArrayList<String> rows1 = new ArrayList<String>(Arrays.asList("These", "Are" , "Rows"));
+		
+		DBErgebnisTranskript et1 = createMockDBErgebnisTranscript(columnHeads1, rows1);
+		DBErgebnisTranskript et2 = createMockDBErgebnisTranscript(columnHeads1, rows1);
+
+		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(et1, et2, aufgabe, userInput);
+		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
+		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.L);
+		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.L.anzeigeText());
 	}
 	@Test
 	public void testDBErgebnisKommentarTypeE(){
@@ -57,8 +77,9 @@ public class DBErgebnisKommentarTests {
 		DBErgebnisTranskript et2 = createMockDBErgebnisTranscript(columnHeads1, rows1);
 
 		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(et1, et2, aufgabe, userInput);
-		assertEquals(kommentar.getKommentar(), ErgebnisKommentarType.E);
-		assertEquals(kommentar.getAusgabeKommentar().getOutput(),ErgebnisKommentarType.E.anzeigeText());
+		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
+		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.E);
+		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.E.anzeigeText());
 	}
 	@Test
 	public void testDBErgebnisKommentarTypeF(){
@@ -73,8 +94,9 @@ public class DBErgebnisKommentarTests {
 		DBErgebnisTranskript correctResult = createMockDBErgebnisTranscript(columnHeads1, rows1);
 
 		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(nutzerResult, correctResult, aufgabe, userInput);
-		assertEquals(kommentar.getKommentar(), ErgebnisKommentarType.F);
-		assertEquals(kommentar.getAusgabeKommentar().getOutput(),ErgebnisKommentarType.F.anzeigeText() + " " + (rows1.size()-rows2.size()));
+		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
+		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.F);
+		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.F.anzeigeText() + " " + (rows1.size()-rows2.size()));
 	}
 	@Test
 	public void testDBErgebnisKommentarTypeZ(){
@@ -89,8 +111,9 @@ public class DBErgebnisKommentarTests {
 		DBErgebnisTranskript correctResult = createMockDBErgebnisTranscript(columnHeads1, rows2);
 
 		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(nutzerResult, correctResult, aufgabe, userInput);
-		assertEquals(kommentar.getKommentar(), ErgebnisKommentarType.Z);
-		assertEquals(kommentar.getAusgabeKommentar().getOutput(),ErgebnisKommentarType.Z.anzeigeText() + " " + (rows1.size()-rows2.size()));
+		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
+		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.Z);
+		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.Z.anzeigeText() + " " + (rows1.size()-rows2.size()));
 	
 	}
 

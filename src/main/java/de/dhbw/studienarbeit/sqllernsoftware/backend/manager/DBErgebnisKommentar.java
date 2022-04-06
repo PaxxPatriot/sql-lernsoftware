@@ -1,5 +1,6 @@
 package de.dhbw.studienarbeit.sqllernsoftware.backend.manager;
 
+import de.dhbw.studienarbeit.sqllernsoftware.backend.ErgebnisBewertung.*;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentarType;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 
@@ -29,48 +30,35 @@ public class DBErgebnisKommentar {
 		this.userInput = userInput;
 	}
 
-	public KommentarAusgabeText getAusgabeKommentar() {
-		KommentarAusgabeText ausgabe = new KommentarAusgabeText(this.getKommentar());
+	public KommentarAusgabeText getKommentar() {
 		
-		if(numberArgument != 0) {
-			ausgabe.addArgument(numberArgument+"");
-		}
-		return ausgabe;
-	}
-
-	public ErgebnisKommentarType getKommentar() {
-		
-		if(aufgabe.getMusterloesung().equalsIgnoreCase(userInput)) {
-			return setComment(ErgebnisKommentarType.M);
-		}
-		if(!matchingColumnsNumber()) {
-			return setComment(ErgebnisKommentarType.C);
-		}
-
 		this.calculateExcessRows();
 		this.calculateMissingRows();
-
-		if(missingRows.size() == 0 && excessRows.size() == 0) {
-			return setComment(ErgebnisKommentarType.E);
-		}
-		if(missingRows.size() > 0) {
-			numberArgument = missingRows.size();
-			return setComment(ErgebnisKommentarType.F);
-		}
-		if(excessRows.size() > 0) {
-			numberArgument = excessRows.size();
-			return setComment(ErgebnisKommentarType.Z);
-		}
-		return comment;
+		ErgebnisBewerter ergebnisBewertung = new ErgebnisBewerter(userInput, aufgabe.getMusterloesung(), excessRows ,missingRows,matchingColumnsNumber());
+		//Conditions
+		ergebnisBewertung.addBewertung(new ErgebnisBewertungLeer());
+		ergebnisBewertung.addBewertung(new ErgebnisBewertungMuster());
+		ergebnisBewertung.addBewertung(new ErgebnisBewertungColumns());
+		ergebnisBewertung.addBewertung(new ErgebnisBewertungEqual());
+		ergebnisBewertung.addBewertung(new ErgebnisBewertungMissing());
+		ergebnisBewertung.addBewertung(new ErgebnisBewertungExcess());
+		
+		KommentarAusgabeText kommentarAusgabeText = ergebnisBewertung.bewerte();
+		this.setComment(kommentarAusgabeText.getKommentarType());
+		return kommentarAusgabeText;
+		
 
 	}
 	
-	private ErgebnisKommentarType setComment(ErgebnisKommentarType r) {
+	private void  setComment(ErgebnisKommentarType r) {
 		comment = r;
-		return comment;
 	}
 	
 	
+	public ErgebnisKommentarType getKommentarType() {
+		return comment;
+	}
+
 	public boolean matchingColumnsNumber() {
 		return userResult.getColumnHeads().size() == correctResult.getColumnHeads().size();
 	}	
