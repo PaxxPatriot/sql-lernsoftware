@@ -44,7 +44,7 @@ public class DBErgebnisKommentar {
 		ergebnisBewertung.addBewertung(new ErgebnisBewertungExcess());
 		
 		KommentarAusgabeText kommentarAusgabeText = ergebnisBewertung.bewerte();
-		this.setComment(kommentarAusgabeText.getKommentar());
+		this.setComment(kommentarAusgabeText.getKommentarType());
 		return kommentarAusgabeText;
 		
 

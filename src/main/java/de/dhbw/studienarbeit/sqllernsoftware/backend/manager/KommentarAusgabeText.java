@@ -25,7 +25,7 @@ public class KommentarAusgabeText {
 		return ausgabe;
 	}
 
-	public ErgebnisKommentarType getKommentar() {
+	public ErgebnisKommentarType getKommentarType() {
 		return kommentar;
 	}
 	
