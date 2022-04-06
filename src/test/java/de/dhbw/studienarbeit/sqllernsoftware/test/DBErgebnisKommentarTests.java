@@ -55,13 +55,8 @@ public class DBErgebnisKommentarTests {
 	public void testDBErgebnisKommentarTypeL(){
 		String userInput = "";
 		Aufgabe aufgabe = createMockAufgabe(userInput);
-		ArrayList<String> columnHeads1 = new ArrayList<String>(Arrays.asList("These", "Are" , "Rows"));
-		ArrayList<String> rows1 = new ArrayList<String>(Arrays.asList("These", "Are" , "Rows"));
 		
-		DBErgebnisTranskript et1 = createMockDBErgebnisTranscript(columnHeads1, rows1);
-		DBErgebnisTranskript et2 = createMockDBErgebnisTranscript(columnHeads1, rows1);
-
-		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(et1, et2, aufgabe, userInput);
+		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(null, null, aufgabe, userInput);
 		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
 		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.L);
 		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.L.anzeigeText());

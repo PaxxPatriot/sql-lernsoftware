@@ -31,10 +31,14 @@ public class DBErgebnisKommentar {
 	}
 
 	public KommentarAusgabeText getKommentar() {
+		boolean matchingColumns = false;
+		if(userResult != null || correctResult != null) {
+			this.calculateExcessRows();
+			this.calculateMissingRows();
+			matchingColumns = matchingColumnsNumber();
+		}
 		
-		this.calculateExcessRows();
-		this.calculateMissingRows();
-		ErgebnisBewerter ergebnisBewertung = new ErgebnisBewerter(userInput, aufgabe.getMusterloesung(), excessRows ,missingRows,matchingColumnsNumber());
+		ErgebnisBewerter ergebnisBewertung = new ErgebnisBewerter(userInput, aufgabe.getMusterloesung(), excessRows ,missingRows,matchingColumns);
 		//Conditions
 		ergebnisBewertung.addBewertung(new ErgebnisBewertungLeer());
 		ergebnisBewertung.addBewertung(new ErgebnisBewertungMuster());
@@ -62,10 +66,7 @@ public class DBErgebnisKommentar {
 	public boolean matchingColumnsNumber() {
 		return userResult.getColumnHeads().size() == correctResult.getColumnHeads().size();
 	}	
-	
-	public int sameRowAmount() {
-		return userResult.getTranscribeResult().size() - correctResult.getTranscribeResult().size();
-	}
+
 	
 	private void calculateExcessRows() {
 		excessRows.clear();

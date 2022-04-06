@@ -19,11 +19,22 @@ public class EntityUtils {
 	
 	private DBErgebnisKommentar getDBKommentar(Aufgabe aufgabe, String userInput) {
 		DatenbasisController datenbasisController = new DatenbasisController();
-		DBErgebnisTranskript[] dbResult = datenbasisController.executeAbfrageUndMusterloesung(aufgabe.getTyp(), aufgabe.getMusterloesung(), userInput, aufgabe.getPruefungsbefehl(), aufgabe.getAufgabenkollektion().getDatenbank());
+		DBErgebnisTranskript[] dbResult = { null,null};
+		if(validInput(userInput)) {
+			dbResult = datenbasisController.executeAbfrageUndMusterloesung(aufgabe.getTyp(), aufgabe.getMusterloesung(), userInput, aufgabe.getPruefungsbefehl(), aufgabe.getAufgabenkollektion().getDatenbank());
+		}
 		return new DBErgebnisKommentar(dbResult[1], dbResult[0], aufgabe, userInput);
 	}
 
 	public KommentarAusgabeText getKommentarText(Aufgabe aufgabe, String userInput) {
 		return this.getDBKommentar(aufgabe, userInput).getKommentar();
 	}
+	
+	private boolean validInput(String userInput) {
+		if(userInput.isBlank()) {
+			return false;
+		}
+		return true;
+	}
+	
 }
