@@ -7,7 +7,7 @@ import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentarType
 
 public abstract class ErgebnisBewertung {
 
-	Optional<Integer> numberArg = Optional.empty(); 
+	private Optional<Integer> numberArg = Optional.empty(); 
 	
 	private ErgebnisKommentarType kommentar = null;
 	
@@ -24,7 +24,7 @@ public abstract class ErgebnisBewertung {
 		return kommentar;
 	}
 	public Optional<Integer> getNumberArg(){
-		return getNumberArg();
+		return numberArg;
 	}
 	protected void setNumberArg(int arg) {
 		 numberArg = Optional.of(arg);

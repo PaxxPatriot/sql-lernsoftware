@@ -1,3 +1,5 @@
+package test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -27,8 +29,8 @@ public class DBErgebnisKommentarTests {
 
 		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(et1, et2, aufgabe, userInput);
 		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
-		assertEquals(kommentarAusgabe.getKommentarType(), ErgebnisKommentarType.L);
-		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.L.anzeigeText());
+		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.M);
+		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.M.anzeigeText());
 	}
 	@Test
 	public void testDBErgebnisKommentarTypeC(){
@@ -45,8 +47,8 @@ public class DBErgebnisKommentarTests {
 
 		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(et1, et2, aufgabe, userInput);
 		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
-		assertEquals(kommentarAusgabe.getKommentarType(), ErgebnisKommentarType.L);
-		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.L.anzeigeText());
+		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.C);
+		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.C.anzeigeText());
 	
 	}
 	@Test
@@ -61,7 +63,7 @@ public class DBErgebnisKommentarTests {
 
 		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(et1, et2, aufgabe, userInput);
 		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
-		assertEquals(kommentarAusgabe.getKommentarType(), ErgebnisKommentarType.L);
+		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.L);
 		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.L.anzeigeText());
 	}
 	@Test
@@ -76,7 +78,7 @@ public class DBErgebnisKommentarTests {
 
 		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(et1, et2, aufgabe, userInput);
 		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
-		assertEquals(kommentarAusgabe.getKommentarType(), ErgebnisKommentarType.E);
+		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.E);
 		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.E.anzeigeText());
 	}
 	@Test
@@ -93,7 +95,7 @@ public class DBErgebnisKommentarTests {
 
 		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(nutzerResult, correctResult, aufgabe, userInput);
 		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
-		assertEquals(kommentarAusgabe.getKommentarType(), ErgebnisKommentarType.F);
+		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.F);
 		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.F.anzeigeText() + " " + (rows1.size()-rows2.size()));
 	}
 	@Test
@@ -110,7 +112,7 @@ public class DBErgebnisKommentarTests {
 
 		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(nutzerResult, correctResult, aufgabe, userInput);
 		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
-		assertEquals(kommentarAusgabe.getKommentarType(), ErgebnisKommentarType.Z);
+		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.Z);
 		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.Z.anzeigeText() + " " + (rows1.size()-rows2.size()));
 	
 	}
