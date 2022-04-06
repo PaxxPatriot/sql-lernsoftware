@@ -1,4 +1,4 @@
-package test;
+package de.dhbw.studienarbeit.sqllernsoftware.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
