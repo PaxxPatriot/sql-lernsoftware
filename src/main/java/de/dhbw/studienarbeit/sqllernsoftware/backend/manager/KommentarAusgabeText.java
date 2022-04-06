@@ -24,6 +24,10 @@ public class KommentarAusgabeText {
 		}
 		return ausgabe;
 	}
+
+	public ErgebnisKommentarType getKommentar() {
+		return kommentar;
+	}
 	
 	
 	

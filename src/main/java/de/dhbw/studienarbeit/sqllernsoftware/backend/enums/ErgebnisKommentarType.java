@@ -6,6 +6,7 @@ public enum ErgebnisKommentarType {
 	E("Ergebnis ist gleich."),
 	Z("Im Erbgebnis befinden sich überschüssige Einträge:"),
 	F("Im Ergebnis fehlen Einträge:"),
+	L("Leere Eingabe"),
 	C("Die Anzahl der selektierten Spalten stimmt nicht überein.");
 //usw
 	private String anzeigeText;

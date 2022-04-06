@@ -15,13 +15,7 @@ public class EntityUtils {
 	//von WIssensfragen
 	//
 
-	public ErgebnisKommentarType getKommentarType(Aufgabe aufgabe, String userInput) {
-		ErgebnisKommentarType kommentar = this.getDBKommentar(aufgabe, userInput).getKommentar();
-		if (kommentar == null) {
-			return ErgebnisKommentarType.ERROR;
-		}
-		return kommentar;
-	}
+
 	
 	private DBErgebnisKommentar getDBKommentar(Aufgabe aufgabe, String userInput) {
 		DatenbasisController datenbasisController = new DatenbasisController();
@@ -30,6 +24,6 @@ public class EntityUtils {
 	}
 
 	public KommentarAusgabeText getKommentarText(Aufgabe aufgabe, String userInput) {
-		return this.getDBKommentar(aufgabe, userInput).getAusgabeKommentar();
+		return this.getDBKommentar(aufgabe, userInput).getKommentar();
 	}
 }
