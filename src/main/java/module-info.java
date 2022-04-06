@@ -10,7 +10,7 @@ module de.dhbw.studienarbeit.sqllernsoftware {
     opens de.dhbw.studienarbeit.sqllernsoftware to javafx.fxml;
     opens de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
     opens de.dhbw.studienarbeit.sqllernsoftware.persistence;
-    opens test to de.dhbw.studienarbeit.sqllernsoftware;
+    opens test;
     exports de.dhbw.studienarbeit.sqllernsoftware;
     exports de.dhbw.studienarbeit.sqllernsoftware.backend.enums;
     exports de.dhbw.studienarbeit.sqllernsoftware.backend.manager;
