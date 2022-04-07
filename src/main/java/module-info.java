@@ -15,4 +15,6 @@ module de.dhbw.studienarbeit.sqllernsoftware {
     opens de.dhbw.studienarbeit.sqllernsoftware.datenbasis;
     exports de.dhbw.studienarbeit.sqllernsoftware.frontend;
     opens de.dhbw.studienarbeit.sqllernsoftware.frontend;
+    exports de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
+    opens de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
 }

@@ -1,4 +1,4 @@
-package de.dhbw.studienarbeit.sqllernsoftware.frontend;
+package de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
 
 import de.dhbw.studienarbeit.sqllernsoftware.HelloApplication;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
@@ -18,7 +18,7 @@ public class BasicDetailpageController {
 
     public void setLecturePage(ObjektMitId object) throws IOException {
         clearDetailpage();
-        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("basic_lektion.fxml"));
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("fxml/basic_lektion.fxml"));
         BasicLektionController basicLektionController = new BasicLektionController();
         basicLektionController.setLektion((Lektion) object);
         loader.setController(basicLektionController);
@@ -30,7 +30,7 @@ public class BasicDetailpageController {
 
     public void setExercisePage(ObjektMitId object) throws IOException {
         clearDetailpage();
-        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("basic_aufgabe.fxml"));
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("fxml/basic_aufgabe.fxml"));
         BasicAufgabenController basicAufgabenController = new BasicAufgabenController();
         basicAufgabenController.setAufgabenkollektion((Aufgabenkollektion) object);
         loader.setController(basicAufgabenController);

@@ -1,21 +1,31 @@
-package de.dhbw.studienarbeit.sqllernsoftware.frontend;
+package de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
 
+import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentar;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.EntityUtils;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
+import de.dhbw.studienarbeit.sqllernsoftware.frontend.StatusButton;
+import de.dhbw.studienarbeit.sqllernsoftware.frontend.StatusIcon;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import org.hibernate.tool.schema.Action;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.sql.PreparedStatement;
+
 
 public class BasicAufgabenController {
 
@@ -32,7 +42,7 @@ public class BasicAufgabenController {
     @FXML
     Label description;
 
-    public void build() {
+    public void build() throws FileNotFoundException {
         title.setText(aufgabenkollektion.getTitel());
         description.setText(aufgabenkollektion.getBeschreibung()+"\n");
 
@@ -48,20 +58,35 @@ public class BasicAufgabenController {
             Text exerciseText = new Text(aufgabe.getAufgabentext());
             vbox.getChildren().add(exerciseText);
 
-            TextField textField = new TextField();
-            vbox.getChildren().add(textField);
+            TextField inputfield = new TextField();
+            vbox.getChildren().add(inputfield);
             TextField revealField = new TextField();
             revealField.setVisible(false);
 
-            Button button = new Button("Prüfen");
+            GridPane statusButtonPane = new GridPane();
+            Label resultLabel = new Label();
+            StatusIcon statusIcon = new StatusIcon(resultLabel);
+
+            StatusButton button = new StatusButton(statusIcon);
+            button.setText("Prüfen");
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent e) {
-                    entityUtils.getKommentar(aufgabe, textField.getText());
+                    ErgebnisKommentar ergebnisKommentar = entityUtils.getKommentar(aufgabe, inputfield.getText());
+
+                    if (ergebnisKommentar.equals(ErgebnisKommentar.M) || ergebnisKommentar.equals(ErgebnisKommentar.E)) {
+                        statusIcon.statusCorrect();
+                    } else if (ergebnisKommentar.equals(ErgebnisKommentar.ERROR) || ergebnisKommentar.equals(ErgebnisKommentar.C) || ergebnisKommentar.equals(ErgebnisKommentar.F) || ergebnisKommentar.equals(ErgebnisKommentar.Z)) {
+                        statusIcon.statusWrong();
+                    }
+                    button.getStatusIcon().getResultLabel().setText(ergebnisKommentar.anzeigeText());
                 }
-            }
-            );
-            vbox.getChildren().add(button);
+            });
+            statusButtonPane.add(button, 0, 0);
+            statusButtonPane.add(statusIcon, 1, 0);
+            vbox.getChildren().add(statusButtonPane);
+            vbox.getChildren().add(resultLabel);
+
 
             Button buttonReveal = new Button("Anzeigen");
             buttonReveal.setOnAction(new EventHandler<ActionEvent>() {

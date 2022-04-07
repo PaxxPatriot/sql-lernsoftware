@@ -1,9 +1,9 @@
-package de.dhbw.studienarbeit.sqllernsoftware.frontend;
+package de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
 
-import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.ObjektMitId;
+import de.dhbw.studienarbeit.sqllernsoftware.frontend.ObjectCellFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,7 +12,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MasterdetailController {

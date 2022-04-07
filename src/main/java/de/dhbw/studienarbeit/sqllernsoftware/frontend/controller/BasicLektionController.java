@@ -1,4 +1,4 @@
-package de.dhbw.studienarbeit.sqllernsoftware.frontend;
+package de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
 
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
 import javafx.fxml.FXML;

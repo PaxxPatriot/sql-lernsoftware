@@ -8,7 +8,7 @@
 
 <AnchorPane
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="de.dhbw.studienarbeit.sqllernsoftware.frontend.MasterdetailController"
+            fx:controller="de.dhbw.studienarbeit.sqllernsoftware.frontend.controller.MasterdetailController"
             fx:id="masterdetailanchor">
 
     <ListView fx:id="listView" onMouseClicked="#clickedListElement"/>

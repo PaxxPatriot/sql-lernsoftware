@@ -1,21 +1,18 @@
-package de.dhbw.studienarbeit.sqllernsoftware.frontend;
+package de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
 
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.ObjektMitId;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import de.dhbw.studienarbeit.sqllernsoftware.persistence.AppdataController;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextBoundsType;
 
 import java.io.IOException;
 import java.util.List;
 
-public class HelloController {
+public class MainController {
     private final AppdataController appdataController = new AppdataController();
     private List<Lektion> lectureList;
     private List<Aufgabenkollektion> exercisecollectionList;

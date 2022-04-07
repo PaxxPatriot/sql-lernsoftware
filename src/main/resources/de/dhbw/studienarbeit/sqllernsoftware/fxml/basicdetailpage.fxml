@@ -8,7 +8,7 @@
 
 <Pane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="de.dhbw.studienarbeit.sqllernsoftware.frontend.BasicDetailpageController"
+            fx:controller="de.dhbw.studienarbeit.sqllernsoftware.frontend.controller.BasicDetailpageController"
             fx:id="basePane">
 
 </Pane>
