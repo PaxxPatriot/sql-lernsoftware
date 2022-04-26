@@ -1,6 +1,7 @@
 package de.dhbw.studienarbeit.sqllernsoftware.frontend;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -13,6 +14,7 @@ public class StatusIcon extends ImageView {
 
     Image wrong, correct, waiting;
     Label resultLabel;
+    ProgressIndicator progressIndicator;
 
     public StatusIcon(Label resultLabel) throws FileNotFoundException {
         wrong = new Image(new FileInputStream("src/main/resources/de/dhbw/studienarbeit/sqllernsoftware/icons/icons8-stornieren-48.png"));
@@ -20,6 +22,8 @@ public class StatusIcon extends ImageView {
         this.setFitHeight(18);
         this.setFitWidth(18);
         this.resultLabel = resultLabel;
+        progressIndicator = new ProgressIndicator();
+
     }
 
     public void statusWrong() {

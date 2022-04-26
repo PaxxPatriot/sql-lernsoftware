@@ -16,6 +16,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -43,6 +44,7 @@ public class BasicAufgabenController {
     Label description;
 
     public void build() throws FileNotFoundException {
+        exercisePane.getColumnConstraints().add(new ColumnConstraints(350));
         title.setText(aufgabenkollektion.getTitel());
         description.setText(aufgabenkollektion.getBeschreibung()+"\n");
 
@@ -60,16 +62,21 @@ public class BasicAufgabenController {
 
             TextField inputfield = new TextField();
             vbox.getChildren().add(inputfield);
-            TextField revealField = new TextField();
-            revealField.setVisible(false);
+            TextField musterloesungField = new TextField();
+            musterloesungField.setVisible(false);
 
             GridPane statusButtonPane = new GridPane();
+            statusButtonPane.setHgap(5.0);
             Label resultLabel = new Label();
             StatusIcon statusIcon = new StatusIcon(resultLabel);
 
-            StatusButton button = new StatusButton(statusIcon);
-            button.setText("Prüfen");
-            button.setOnAction(new EventHandler<ActionEvent>() {
+
+            StatusButton buttonPruefen = new StatusButton(statusIcon);
+            Button buttonMusterloesung = new Button("Musterlösung anzeigen");
+            buttonMusterloesung.setVisible(false);
+
+            buttonPruefen.setText("Prüfen");
+            buttonPruefen.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent e) {
                     ErgebnisKommentar ergebnisKommentar = entityUtils.getKommentar(aufgabe, inputfield.getText());
@@ -79,25 +86,31 @@ public class BasicAufgabenController {
                     } else if (ergebnisKommentar.equals(ErgebnisKommentar.ERROR) || ergebnisKommentar.equals(ErgebnisKommentar.C) || ergebnisKommentar.equals(ErgebnisKommentar.F) || ergebnisKommentar.equals(ErgebnisKommentar.Z)) {
                         statusIcon.statusWrong();
                     }
-                    button.getStatusIcon().getResultLabel().setText(ergebnisKommentar.anzeigeText());
+                    buttonPruefen.getStatusIcon().getResultLabel().setText(ergebnisKommentar.anzeigeText());
+                    buttonMusterloesung.setVisible(true);
                 }
             });
-            statusButtonPane.add(button, 0, 0);
+            statusButtonPane.add(buttonPruefen, 0, 0);
             statusButtonPane.add(statusIcon, 1, 0);
             vbox.getChildren().add(statusButtonPane);
             vbox.getChildren().add(resultLabel);
 
 
-            Button buttonReveal = new Button("Anzeigen");
-            buttonReveal.setOnAction(new EventHandler<ActionEvent>() {
+
+            buttonMusterloesung.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    revealField.setText(aufgabe.getMusterloesung());
-                    revealField.setVisible(true);
+                    if (!musterloesungField.isVisible()) {
+                        musterloesungField.setText(aufgabe.getMusterloesung());
+                        musterloesungField.setVisible(true);
+                    } else {
+                        musterloesungField.setVisible(false);
+                    }
+
                 }
             });
-            vbox.getChildren().add(buttonReveal);
-            vbox.getChildren().add(revealField);
+            vbox.getChildren().add(buttonMusterloesung);
+            vbox.getChildren().add(musterloesungField);
 
             exercisePane.add(vbox, 0, row);
             row++;

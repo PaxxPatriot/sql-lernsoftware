@@ -17,6 +17,8 @@ public class BasicDetailpageController {
     private Pane basePane;
 
     public void setLecturePage(ObjektMitId object) throws IOException {
+        Lektion lecture = (Lektion) object;
+        System.out.println(lecture.getInhalte());
         clearDetailpage();
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("fxml/basic_lektion.fxml"));
         BasicLektionController basicLektionController = new BasicLektionController();
