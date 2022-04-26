@@ -2,12 +2,14 @@ package de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
 
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.LektionsInhalt;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.ObjektMitId;
 import de.dhbw.studienarbeit.sqllernsoftware.frontend.ObjectCellFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -32,7 +34,16 @@ public class MasterdetailController {
     private void clickedListElement() throws IOException {
         ObjektMitId selectedItem = (ObjektMitId) listView.getSelectionModel().getSelectedItem();
         if (selectedItem instanceof Lektion) {
-            basicdetailpageController.setLecturePage(selectedItem);
+            Lektion lektion = (Lektion) selectedItem;
+            ObservableList<LektionsInhalt> obs = FXCollections.observableList(lektion.getInhalte());
+            ListView listview2 = new ListView(obs);
+            listview2.setCellFactory(new ObjectCellFactory());
+            listview2.setVisible(true);
+            listview2.refresh();
+            masterdetailanchor.getChildren().add(listview2);
+
+
+            //basicdetailpageController.setLecturePage(selectedItem);
         } else if (selectedItem instanceof Aufgabenkollektion) {
             basicdetailpageController.setExercisePage(selectedItem);
         }

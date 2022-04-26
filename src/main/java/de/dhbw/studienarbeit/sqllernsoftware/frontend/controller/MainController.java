@@ -57,8 +57,6 @@ public class MainController {
         });
         lectureMenu.setGraphic(lectureMenuLabel);
 
-        masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) lectureList);
-
     }
 
     public void gotoExercise() throws IOException {
@@ -69,25 +67,6 @@ public class MainController {
     }
 
     public void gotoLecture() throws IOException {
-        //FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("basic_lektion.fxml"));
-        //BasicLectureController lectureController = new BasicLectureController();
-
-        //loader.setController(lectureController);
-        //Parent LektionenManager = loader.load();
-
-        /*List<Node> nodesToDelete = new ArrayList<>();
-        for (Object o : root.getChildren()) {
-            Node node = (Node) o;
-            System.out.println(node.getId());
-            if (!node.getId().equals("menuBar")) {
-                nodesToDelete.add(node);
-            }
-        }
-        for (Node node : nodesToDelete) {
-            root.getChildren().remove(node);
-        }
-
-        root.getChildren().add(LektionenManager); */
         masterdetailController.clearDetailpage();
         masterdetailController.getListView().refresh();
         masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) lectureList);

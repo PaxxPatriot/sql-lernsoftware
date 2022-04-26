@@ -1,7 +1,10 @@
 package de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
 
-import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentar;
+
+import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentarType;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.DBErgebnisKommentar;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.EntityUtils;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.KommentarAusgabeText;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
 import de.dhbw.studienarbeit.sqllernsoftware.frontend.StatusButton;
@@ -79,14 +82,14 @@ public class BasicAufgabenController {
             buttonPruefen.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent e) {
-                    ErgebnisKommentar ergebnisKommentar = entityUtils.getKommentar(aufgabe, inputfield.getText());
+                    KommentarAusgabeText ergebnisKommentar = entityUtils.getKommentarText(aufgabe, inputfield.getText());
 
-                    if (ergebnisKommentar.equals(ErgebnisKommentar.M) || ergebnisKommentar.equals(ErgebnisKommentar.E)) {
+                    if (ergebnisKommentar.equals(ErgebnisKommentarType.M) || ergebnisKommentar.equals(ErgebnisKommentarType.E)) {
                         statusIcon.statusCorrect();
-                    } else if (ergebnisKommentar.equals(ErgebnisKommentar.ERROR) || ergebnisKommentar.equals(ErgebnisKommentar.C) || ergebnisKommentar.equals(ErgebnisKommentar.F) || ergebnisKommentar.equals(ErgebnisKommentar.Z)) {
+                    } else if (ergebnisKommentar.equals(ErgebnisKommentarType.ERROR) || ergebnisKommentar.equals(ErgebnisKommentarType.C) || ergebnisKommentar.equals(ErgebnisKommentarType.F) || ergebnisKommentar.equals(ErgebnisKommentarType.Z) || ergebnisKommentar.equals(ErgebnisKommentarType.L)) {
                         statusIcon.statusWrong();
                     }
-                    buttonPruefen.getStatusIcon().getResultLabel().setText(ergebnisKommentar.anzeigeText());
+                    buttonPruefen.getStatusIcon().getResultLabel().setText(ergebnisKommentar.getOutput());
                     buttonMusterloesung.setVisible(true);
                 }
             });
