@@ -1,4 +1,4 @@
-module de.dhbw.studienarbeit.sqllernsoftware {
+open module de.dhbw.studienarbeit.sqllernsoftware {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.persistence;
@@ -8,13 +8,9 @@ module de.dhbw.studienarbeit.sqllernsoftware {
     requires javafx.web;
 
 
-    opens de.dhbw.studienarbeit.sqllernsoftware to javafx.fxml;
-    opens de.dhbw.studienarbeit.sqllernsoftware.backend.objekte;
-    opens de.dhbw.studienarbeit.sqllernsoftware.persistence;
+
     exports de.dhbw.studienarbeit.sqllernsoftware;
-    opens de.dhbw.studienarbeit.sqllernsoftware.datenbasis;
-    exports de.dhbw.studienarbeit.sqllernsoftware.frontend;
-    opens de.dhbw.studienarbeit.sqllernsoftware.frontend;
-    exports de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
-    opens de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
+    exports de.dhbw.studienarbeit.sqllernsoftware.backend.enums;
+    exports de.dhbw.studienarbeit.sqllernsoftware.backend.manager;
+
 }

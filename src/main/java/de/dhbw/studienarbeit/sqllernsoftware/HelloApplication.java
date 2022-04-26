@@ -29,7 +29,7 @@ public class HelloApplication extends Application {
         Aufgabe aufgabe = aufgabenkollektion.get(0).getAufgabe(1);
         System.out.println(aufgabe.getAufgabentext());
         EntityUtils entityUtils = new EntityUtils();
-        System.out.println(entityUtils.getAusgabeKommentar(aufgabe, "DELETE FROM Professoren WHERE id = 5588;").getOutput());
+        System.out.println(entityUtils.getKommentarText(aufgabe, "DELETE FROM Professoren WHERE id = 5588;").getOutput());
         launch();
     }
 }
