@@ -15,15 +15,20 @@ public class LektionsInhaltText extends LektionsInhalt {
 	private String ueberschrift;
 	@Column(name = "text")
 	private String text;
-	
 
-public LektionsInhaltText(String id, Lektion lektion, int reihenfolge, String ueberschrift,
-						  String text) {
+
+	public LektionsInhaltText() {
+		super();
+	}
+
+	public LektionsInhaltText(String id, Lektion lektion, int reihenfolge, String ueberschrift,
+							  String text) {
 		super(id, Inhaltstyp.A, lektion, reihenfolge);
 		this.ueberschrift = ueberschrift;
 		this.text = text;
 	}
-/*---------------------------------------------------------*/
+
+	/*---------------------------------------------------------*/
 	public String getText() {
 		return text;
 	}
@@ -31,4 +36,8 @@ public LektionsInhaltText(String id, Lektion lektion, int reihenfolge, String ue
 		return ueberschrift;
 	}
 
+	@Override
+	public String getUITitel() {
+		return this.ueberschrift;
+	}
 }

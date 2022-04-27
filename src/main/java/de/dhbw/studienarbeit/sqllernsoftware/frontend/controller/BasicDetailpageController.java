@@ -3,6 +3,7 @@ package de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
 import de.dhbw.studienarbeit.sqllernsoftware.HelloApplication;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.LektionsInhalt;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.ObjektMitId;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,11 +18,11 @@ public class BasicDetailpageController {
     private Pane basePane;
 
     public void setLecturePage(ObjektMitId object) throws IOException {
-        Lektion lecture = (Lektion) object;
+        LektionsInhalt lektionsInhalt = (LektionsInhalt) object;
         clearDetailpage();
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("fxml/basic_lektion.fxml"));
         BasicLektionController basicLektionController = new BasicLektionController();
-        basicLektionController.setLektion((Lektion) object);
+        basicLektionController.setLektionsInhalt(lektionsInhalt);
         loader.setController(basicLektionController);
         Parent lektionElemente = loader.load();
 

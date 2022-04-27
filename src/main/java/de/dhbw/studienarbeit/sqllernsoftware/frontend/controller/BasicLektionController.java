@@ -1,6 +1,7 @@
 package de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
 
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.LektionsInhalt;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.text.TextFlow;
@@ -9,7 +10,7 @@ import javafx.scene.web.WebView;
 
 public class BasicLektionController {
 
-    private Lektion lektion;
+    private LektionsInhalt lektionsInhalt;
 
     @FXML
     Label title;
@@ -21,15 +22,15 @@ public class BasicLektionController {
     WebView webView;
 
     public void build() {
-        title.setText(lektion.getTitel());
-        webView.getEngine().loadContent(lektion.getBeschreibung());
+        title.setText(lektionsInhalt.getUITitel());
+        webView.getEngine().loadContent(lektionsInhalt.getUIBeschreibung());
     }
 
-    public Lektion getLektion() {
-        return lektion;
+    public LektionsInhalt getLektionsInhalt() {
+        return lektionsInhalt;
     }
 
-    public void setLektion(Lektion lektion) {
-        this.lektion = lektion;
+    public void setLektionsInhalt(LektionsInhalt lektionsInhalt) {
+        this.lektionsInhalt = lektionsInhalt;
     }
 }
