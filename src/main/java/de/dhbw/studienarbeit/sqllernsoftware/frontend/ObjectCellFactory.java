@@ -1,6 +1,7 @@
 package de.dhbw.studienarbeit.sqllernsoftware.frontend;
 
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion;
+import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.LektionsInhalt;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.ObjektMitId;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -18,7 +19,12 @@ public class ObjectCellFactory implements Callback<ListView<ObjektMitId>, ListCe
                 if (empty || objektMitId == null) {
                     setText(null);
                 } else {
-                    setText(objektMitId.getUITitel());
+                    if (objektMitId instanceof LektionsInhalt) {
+                        setText("\t\t"+objektMitId.getUITitel());
+                    } else {
+                        setText(objektMitId.getUITitel());
+                    }
+
                 }
 
                 setOnMouseClicked((MouseEvent event) -> {
