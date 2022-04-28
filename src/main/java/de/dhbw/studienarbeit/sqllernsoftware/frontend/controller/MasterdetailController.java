@@ -20,7 +20,8 @@ import java.util.List;
 public class MasterdetailController {
 
     private List<ObjektMitId> objektMitIdList;
-    private ObservableList<?> tempList;
+    private List<ObjektMitId> backUpobjektMitIdList;
+
 
     @FXML
     Pane basicdetailpage;
@@ -54,7 +55,8 @@ public class MasterdetailController {
             System.out.println(lektion.getTitel());
             System.out.println(lektion.getId());*/
 
-            addAfter(lektion, (List<Lektion>) (List<?>) this.objektMitIdList);
+            List<Lektion> temp = (List<Lektion>) (List<?>) this.objektMitIdList;
+            addAfter(lektion, temp);
             //listView.refresh();
 
             //basicdetailpageController.setLecturePage(selectedItem);
@@ -89,6 +91,7 @@ public class MasterdetailController {
 
     public void setObjektMitIdList(List<ObjektMitId> objektMitIdList) {
         this.objektMitIdList = objektMitIdList;
+        this.backUpobjektMitIdList = new ArrayList<>(objektMitIdList);
         System.out.println("Print setObjektMitIdList");
         System.out.println(this.objektMitIdList);
         ObservableList<ObjektMitId> observableList = FXCollections.observableList(this.objektMitIdList);
@@ -102,33 +105,28 @@ public class MasterdetailController {
     }
 
     public void addAfter(Lektion lektion, List<Lektion> lektionList) {
-        List<Lektion> lektionObservableList1 = new ArrayList<>();
-        List<Lektion> lektionObservableList2 = new ArrayList<>();
-        Boolean firstList = true;
 
-        System.out.println(lektionList);
-        listView.getItems().removeAll(lektionList);
-        System.out.println("Cleared list");
+        listView.getItems().retainAll(backUpobjektMitIdList);
+        System.out.println(backUpobjektMitIdList);
+        Integer index = listView.getItems().indexOf(lektion);
         List<LektionsInhalt> lektionsInhaltList = lektion.getInhalte();
-        for (Lektion lektion1 : lektionList) {
-            if (firstList) {
-                System.out.println("For Execution works");
-                if (lektion1.equals(lektion)) {
-                    lektionObservableList1.add(lektion1);
-                    System.out.println("Added Inhalte!");
-                    firstList = false;
-                } else {
-                    lektionObservableList1.add(lektion1);
-                }
-                System.out.println(listView.getItems());
+
+        try {
+            if (!listView.getItems().get(index + 1).equals(lektionsInhaltList.get(0))) {
+                listView.getItems().addAll(index + 1, lektionsInhaltList);
+
+                listView.refresh();
+                System.out.println("Finished execution addAfter");
+
+            } else {
+                System.out.println("Already open!");
             }
-            lektionObservableList2.add(lektion1);
+
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Lektion hat keine Inhalte");
         }
-        listView.getItems().addAll(FXCollections.observableList(lektionObservableList1));
-        listView.getItems().addAll(FXCollections.observableList(lektionsInhaltList));
-        listView.getItems().addAll(FXCollections.observableList(lektionObservableList2));
-        tempList = listView.getItems();
-        listView.refresh();
-        System.out.println("Finished execution addAfter");
+
+
     }
 }

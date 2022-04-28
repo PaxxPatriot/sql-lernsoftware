@@ -28,9 +28,6 @@ public class MainController {
 
     @FXML
     public void initialize() throws IOException {
-        lectureList = appdataController.getAllLektion();
-        exercisecollectionList = appdataController.getAllAufgabenkollektion();
-
         Label exerciseMenuLabel = new Label("Übungen");
         exerciseMenuLabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -60,6 +57,7 @@ public class MainController {
     }
 
     public void gotoExercise() throws IOException {
+        exercisecollectionList = appdataController.getAllAufgabenkollektion();
         masterdetailController.clearDetailpage();
         masterdetailController.getListView().refresh();
         masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) exercisecollectionList);
@@ -67,6 +65,9 @@ public class MainController {
     }
 
     public void gotoLecture() throws IOException {
+        lectureList = appdataController.getAllLektion();
+        System.out.println("lectureList");
+        System.out.println(lectureList);
         masterdetailController.clearDetailpage();
         masterdetailController.getListView().refresh();
         masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) lectureList);
