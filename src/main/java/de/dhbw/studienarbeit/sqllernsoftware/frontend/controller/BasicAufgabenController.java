@@ -73,6 +73,7 @@ public class BasicAufgabenController {
             statusButtonPane.setHgap(5.0);
             Label resultLabel = new Label();
             StatusIcon statusIcon = new StatusIcon(resultLabel);
+            statusIcon.setVisible(true);
 
 
             StatusButton buttonPruefen = new StatusButton(statusIcon);
@@ -84,21 +85,24 @@ public class BasicAufgabenController {
                 @Override
                 public void handle(ActionEvent e) {
                     KommentarAusgabeText ergebnisKommentar = entityUtils.getKommentarText(aufgabe, inputfield.getText());
-
-                    if (ergebnisKommentar.equals(ErgebnisKommentarType.M) || ergebnisKommentar.equals(ErgebnisKommentarType.E)) {
+                    System.out.println("Button Prüfen was used");
+                    System.out.println(ergebnisKommentar);
+                    if (ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.M) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.E)) {
                         statusIcon.statusCorrect();
-                    } else if (ergebnisKommentar.equals(ErgebnisKommentarType.ERROR) || ergebnisKommentar.equals(ErgebnisKommentarType.C) || ergebnisKommentar.equals(ErgebnisKommentarType.F) || ergebnisKommentar.equals(ErgebnisKommentarType.Z) || ergebnisKommentar.equals(ErgebnisKommentarType.L)) {
+                        System.out.println("Status was set correct");
+                    } else if (ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.ERROR) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.C) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.F) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.Z) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.L)) {
                         statusIcon.statusWrong();
+                        System.out.println("Status was set wrong");
                     }
                     buttonPruefen.getStatusIcon().getResultLabel().setText(ergebnisKommentar.getOutput());
                     buttonMusterloesung.setVisible(true);
                 }
             });
+
             statusButtonPane.add(buttonPruefen, 0, 0);
             statusButtonPane.add(statusIcon, 1, 0);
             vbox.getChildren().add(statusButtonPane);
             vbox.getChildren().add(resultLabel);
-
 
 
             buttonMusterloesung.setOnAction(new EventHandler<ActionEvent>() {
