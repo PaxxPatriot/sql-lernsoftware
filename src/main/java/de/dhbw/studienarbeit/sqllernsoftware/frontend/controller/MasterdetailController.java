@@ -13,6 +13,7 @@ import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,7 +90,7 @@ public class MasterdetailController {
         return this.objektMitIdList;
     }
 
-    public void setObjektMitIdList(List<ObjektMitId> objektMitIdList) {
+    public void setObjektMitIdList(List<ObjektMitId> objektMitIdList) throws FileNotFoundException {
         this.objektMitIdList = objektMitIdList;
         this.backUpobjektMitIdList = new ArrayList<>(objektMitIdList);
         System.out.println("Print setObjektMitIdList");

@@ -82,6 +82,7 @@ public class BasicAufgabenController {
             buttonPruefen.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent e) {
+                    System.out.println(inputfield.getText());
                     KommentarAusgabeText ergebnisKommentar = entityUtils.getKommentarText(aufgabe, inputfield.getText());
 
                     if (ergebnisKommentar.equals(ErgebnisKommentarType.M) || ergebnisKommentar.equals(ErgebnisKommentarType.E)) {
