@@ -61,17 +61,13 @@ public class MainController {
         masterdetailController.clearDetailpage();
         masterdetailController.getListView().refresh();
         masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) exercisecollectionList);
-
     }
 
     public void gotoLecture() throws IOException {
         lectureList = appdataController.getAllLektion();
-        System.out.println("lectureList");
-        System.out.println(lectureList);
         masterdetailController.clearDetailpage();
         masterdetailController.getListView().refresh();
         masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) lectureList);
-
     }
 
 

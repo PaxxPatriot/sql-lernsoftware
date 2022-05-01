@@ -41,26 +41,9 @@ public class MasterdetailController {
         ObjektMitId selectedItem = (ObjektMitId) listView.getSelectionModel().getSelectedItem();
         if (selectedItem instanceof Lektion) {
             Lektion lektion = (Lektion) selectedItem;
-            ObservableList<LektionsInhalt> obs = FXCollections.observableList(lektion.getInhalte());
+            addAfter(lektion);
+            listView.refresh();
 
-            System.out.println(this.objektMitIdList);
-            //ListView listview2 = new ListView(obs);
-            //listview2.setCellFactory(new ObjectCellFactory());
-            //listview2.setVisible(true);
-            //listview2.refresh();
-            //masterdetailanchor.getChildren().add(listview2);
-
-            /*
-            System.out.println(obs);
-            System.out.println(lektion.getBeschreibung());
-            System.out.println(lektion.getTitel());
-            System.out.println(lektion.getId());*/
-
-            List<Lektion> temp = (List<Lektion>) (List<?>) this.objektMitIdList;
-            addAfter(lektion, temp);
-            //listView.refresh();
-
-            //basicdetailpageController.setLecturePage(selectedItem);
         } else if (selectedItem instanceof Aufgabenkollektion) {
             basicdetailpageController.setExercisePage(selectedItem);
 
@@ -93,8 +76,6 @@ public class MasterdetailController {
     public void setObjektMitIdList(List<ObjektMitId> objektMitIdList) throws FileNotFoundException {
         this.objektMitIdList = objektMitIdList;
         this.backUpobjektMitIdList = new ArrayList<>(objektMitIdList);
-        System.out.println("Print setObjektMitIdList");
-        System.out.println(this.objektMitIdList);
         ObservableList<ObjektMitId> observableList = FXCollections.observableList(this.objektMitIdList);
         listView.setCellFactory(new ObjectCellFactory());
         listView.setItems(observableList);
@@ -105,29 +86,23 @@ public class MasterdetailController {
         basicdetailpageController.clearDetailpage();
     }
 
-    public void addAfter(Lektion lektion, List<Lektion> lektionList) {
+    public void addAfter(Lektion lektion) {
 
         listView.getItems().retainAll(backUpobjektMitIdList);
-        System.out.println(backUpobjektMitIdList);
         Integer index = listView.getItems().indexOf(lektion);
         List<LektionsInhalt> lektionsInhaltList = lektion.getInhalte();
 
         try {
             if (!listView.getItems().get(index + 1).equals(lektionsInhaltList.get(0))) {
                 listView.getItems().addAll(index + 1, lektionsInhaltList);
-
-                listView.refresh();
-                System.out.println("Finished execution addAfter");
-
             } else {
-                System.out.println("Already open!");
+                //System.out.println("Already open!");
             }
 
         } catch (Exception e) {
-            System.out.println(e);
-            System.out.println("Lektion hat keine Inhalte");
+            //System.out.println(e);
+            //System.out.println("Lektion hat keine Inhalte");
         }
-
 
     }
 }
