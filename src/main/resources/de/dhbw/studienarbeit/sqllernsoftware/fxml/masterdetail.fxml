@@ -12,10 +12,6 @@
             fx:id="masterdetailanchor">
 
     <ListView fx:id="listView" onMouseClicked="#clickedListElement"/>
-
-
-
-
     <fx:include source="basicdetailpage.fxml" fx:id="basicdetailpage"/>
 
 </AnchorPane>

@@ -13,16 +13,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -38,6 +33,12 @@ public class BasicAufgabenController {
     EntityUtils entityUtils = new EntityUtils();
 
     @FXML
+    AnchorPane anchorPane;
+
+    @FXML
+    ScrollPane scrollPane;
+
+    @FXML
     GridPane exercisePane;
 
     @FXML
@@ -47,19 +48,31 @@ public class BasicAufgabenController {
     Label description;
 
     public void build() throws FileNotFoundException {
-        exercisePane.getColumnConstraints().add(new ColumnConstraints(350));
+        //exercisePane.getColumnConstraints().add(new ColumnConstraints(350));
         title.setText(aufgabenkollektion.getTitel());
         description.setText(aufgabenkollektion.getBeschreibung()+"\n");
+
+        AnchorPane.setTopAnchor(scrollPane, 5.0);
+        AnchorPane.setRightAnchor(scrollPane, 5.0);
+        AnchorPane.setBottomAnchor(scrollPane, 5.0);
 
         Integer row = 2;
 
         for (Aufgabe aufgabe : aufgabenkollektion.getAufgabenliste()) {
             VBox vbox = new VBox();
+            vbox.setStyle("-fx-padding: 10;" +
+                    "-fx-border-style: solid inside;" +
+                    "-fx-border-width: 2;" +
+                    "-fx-border-insets: 5;" +
+                    "-fx-border-radius: 5;" +
+                    "-fx-border-color: gray;"
+            );
             vbox.setPadding(new Insets(10));
             vbox.setSpacing(10);
+            vbox.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(.0), new Insets(5.0))));
+
             Text title = new Text(aufgabe.getTitel());
             vbox.getChildren().add(title);
-
             Text exerciseText = new Text(aufgabe.getAufgabentext());
             vbox.getChildren().add(exerciseText);
 
@@ -84,15 +97,12 @@ public class BasicAufgabenController {
             buttonPruefen.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent e) {
+                    statusIcon.statusLoading();
                     KommentarAusgabeText ergebnisKommentar = entityUtils.getKommentarText(aufgabe, inputfield.getText());
-                    System.out.println("Button Prüfen was used");
-                    System.out.println(ergebnisKommentar);
                     if (ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.M) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.E)) {
                         statusIcon.statusCorrect();
-                        System.out.println("Status was set correct");
                     } else if (ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.ERROR) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.C) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.F) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.Z) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.L)) {
                         statusIcon.statusWrong();
-                        System.out.println("Status was set wrong");
                     }
                     buttonPruefen.getStatusIcon().getResultLabel().setText(ergebnisKommentar.getOutput());
                     buttonMusterloesung.setVisible(true);

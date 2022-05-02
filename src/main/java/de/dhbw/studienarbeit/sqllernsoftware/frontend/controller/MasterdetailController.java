@@ -25,7 +25,7 @@ public class MasterdetailController {
 
 
     @FXML
-    Pane basicdetailpage;
+    AnchorPane basicdetailpage;
 
     @FXML
     BasicDetailpageController basicdetailpageController;
@@ -58,7 +58,9 @@ public class MasterdetailController {
         AnchorPane.setLeftAnchor(listView, 4.0);
         AnchorPane.setBottomAnchor(listView, 5.0);
         AnchorPane.setLeftAnchor(basicdetailpage, 260.0);
-        AnchorPane.setTopAnchor(basicdetailpage, 5.0);
+        AnchorPane.setTopAnchor(basicdetailpage, .0);
+        AnchorPane.setBottomAnchor(basicdetailpage, .0);
+        AnchorPane.setRightAnchor(basicdetailpage, .0);
     }
 
     public ListView<String> getListView() {

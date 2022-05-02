@@ -8,6 +8,7 @@ import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.ObjektMitId;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -15,7 +16,7 @@ import java.io.IOException;
 public class BasicDetailpageController {
 
     @FXML
-    private Pane basePane;
+    private AnchorPane basePane;
 
     public void setLecturePage(ObjektMitId object) throws IOException {
         LektionsInhalt lektionsInhalt = (LektionsInhalt) object;
@@ -27,6 +28,11 @@ public class BasicDetailpageController {
         Parent lektionElemente = loader.load();
 
         basePane.getChildren().add(lektionElemente);
+        AnchorPane.setTopAnchor(lektionElemente, .0);
+        AnchorPane.setBottomAnchor(lektionElemente, .0);
+        AnchorPane.setLeftAnchor(lektionElemente, .0);
+        AnchorPane.setRightAnchor(lektionElemente, .0);
+
         basicLektionController.build();
     }
 
@@ -39,6 +45,11 @@ public class BasicDetailpageController {
         Parent lektionElemente = loader.load();
 
         basePane.getChildren().add(lektionElemente);
+        AnchorPane.setTopAnchor(lektionElemente, .0);
+        AnchorPane.setBottomAnchor(lektionElemente, .0);
+        AnchorPane.setLeftAnchor(lektionElemente, .0);
+        AnchorPane.setRightAnchor(lektionElemente, .0);
+
         basicAufgabenController.build();
     }
 
