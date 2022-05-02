@@ -33,7 +33,9 @@ public class EntityUtils {
 		try {
 			kommentarAusgabeText = this.getDBKommentar(aufgabe, userInput).getKommentar();
 		} catch (SQLException e) {
-			return new KommentarAusgabeText(ErgebnisKommentarType.ERROR);
+			KommentarAusgabeText ausgabeText = new KommentarAusgabeText(ErgebnisKommentarType.ERROR);
+			ausgabeText.addArgument(e.getMessage());
+			return ausgabeText;
 		}
 		return kommentarAusgabeText;
 	}
