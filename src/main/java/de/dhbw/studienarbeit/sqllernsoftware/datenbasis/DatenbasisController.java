@@ -27,7 +27,7 @@ public class DatenbasisController implements Datenbasis {
         }
     }
 
-    public DBErgebnisTranskript[] executeAbfrageUndMusterloesung(Aufgabentyp aufgabentyp, String userQuery, String loesungQuery, String pruefungsQuery, String datenbankPfad) {
+    public DBErgebnisTranskript[] executeAbfrageUndMusterloesung(Aufgabentyp aufgabentyp, String userQuery, String loesungQuery, String pruefungsQuery, String datenbankPfad) throws SQLException {
         DBErgebnisTranskript[] abfrageUndLoesung = new DBErgebnisTranskript[2];
         String url = String.format("jdbc:sqlite:%s", datenbankPfad);
         switch (aufgabentyp) {
@@ -38,6 +38,7 @@ public class DatenbasisController implements Datenbasis {
                     //return abfrageUndLoesung;
                 } catch (SQLException e) {
                     logger.warning(e.getMessage());
+                    throw e;
                 }
                 return abfrageUndLoesung;
             }
@@ -52,6 +53,7 @@ public class DatenbasisController implements Datenbasis {
                     //return abfrageUndLoesung;
                 } catch (SQLException e) {
                     logger.warning(e.getMessage());
+                    throw e;
                 } finally {
                     // Delete temporary copies of Datenbasis
                     new File(url_user.substring(12)).delete();

@@ -4,20 +4,22 @@ import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentarType
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 import de.dhbw.studienarbeit.sqllernsoftware.datenbasis.DatenbasisController;
 
+import java.sql.SQLException;
+
 public class EntityUtils {
-	
+
 	public EntityUtils() {
 
 	}
-	
+
 	//Util zum vergleichen der Ergebnisse
 	//von aufgaben ergebnisse
 	//von WIssensfragen
 	//
 
 
-	
-	private DBErgebnisKommentar getDBKommentar(Aufgabe aufgabe, String userInput) {
+
+	private DBErgebnisKommentar getDBKommentar(Aufgabe aufgabe, String userInput) throws SQLException {
 		DatenbasisController datenbasisController = new DatenbasisController();
 		DBErgebnisTranskript[] dbResult = { null,null};
 		if(validInput(userInput)) {
@@ -27,14 +29,20 @@ public class EntityUtils {
 	}
 
 	public KommentarAusgabeText getKommentarText(Aufgabe aufgabe, String userInput) {
-		return this.getDBKommentar(aufgabe, userInput).getKommentar();
+		KommentarAusgabeText kommentarAusgabeText;
+		try {
+			kommentarAusgabeText = this.getDBKommentar(aufgabe, userInput).getKommentar();
+		} catch (SQLException e) {
+			return new KommentarAusgabeText(ErgebnisKommentarType.ERROR);
+		}
+		return kommentarAusgabeText;
 	}
-	
+
 	private boolean validInput(String userInput) {
 		if(userInput.isBlank()) {
 			return false;
 		}
 		return true;
 	}
-	
+
 }
