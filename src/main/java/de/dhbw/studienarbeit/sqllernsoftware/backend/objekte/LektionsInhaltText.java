@@ -40,4 +40,9 @@ public class LektionsInhaltText extends LektionsInhalt {
 	public String getUITitel() {
 		return this.ueberschrift;
 	}
+
+	@Override
+	public String getUIBeschreibung() {
+		return this.text;
+	}
 }

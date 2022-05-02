@@ -30,6 +30,11 @@ public class LektionsInhaltAufgabe extends LektionsInhalt {
 		return this.frage;
 	}
 
+	@Override
+	public String getUIBeschreibung() {
+		return this.antwort;
+	}
+
 	public String getFrage() {
 		return frage;
 	}
