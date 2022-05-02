@@ -24,12 +24,6 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         AppdataController appdataController = new AppdataController();
-        List<Aufgabenkollektion> aufgabenkollektion = appdataController.getAllAufgabenkollektion();
-        System.out.println(aufgabenkollektion.get(0).getId());
-        Aufgabe aufgabe = aufgabenkollektion.get(0).getAufgabe(1);
-        System.out.println(aufgabe.getAufgabentext());
-        EntityUtils entityUtils = new EntityUtils();
-        System.out.println(entityUtils.getKommentarText(aufgabe, "DELETE FROM Professoren WHERE id = 5588;").getOutput());
         launch();
     }
 }
