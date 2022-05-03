@@ -5,9 +5,10 @@ import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.DBErgebnisTranskrip
 
 import java.io.File;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public interface Datenbasis {
-    DBErgebnisTranskript[] executeAbfrageUndMusterloesung(Aufgabentyp aufgabentyp, String userQuery, String loesungQuery, String pruefungsQuery, String datenbankPfad);
+    DBErgebnisTranskript[] executeAbfrageUndMusterloesung(Aufgabentyp aufgabentyp, String userQuery, String loesungQuery, String pruefungsQuery, String datenbankPfad) throws SQLException;
 
     String copyDatenbasis();
 
