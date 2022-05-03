@@ -7,6 +7,7 @@ import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.EntityUtils;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.KommentarAusgabeText;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
+import de.dhbw.studienarbeit.sqllernsoftware.frontend.AufgabeUI;
 import de.dhbw.studienarbeit.sqllernsoftware.frontend.StatusButton;
 import de.dhbw.studienarbeit.sqllernsoftware.frontend.StatusIcon;
 import javafx.event.ActionEvent;
@@ -59,6 +60,10 @@ public class BasicAufgabenController {
         Integer row = 2;
 
         for (Aufgabe aufgabe : aufgabenkollektion.getAufgabenliste()) {
+
+            AufgabeUI aufgabeUI = new AufgabeUI(aufgabe, entityUtils);
+
+            /*
             VBox vbox = new VBox();
             vbox.setStyle("-fx-padding: 10;" +
                     "-fx-border-style: solid inside;" +
@@ -128,9 +133,9 @@ public class BasicAufgabenController {
                 }
             });
             vbox.getChildren().add(buttonMusterloesung);
-            vbox.getChildren().add(musterloesungField);
+            vbox.getChildren().add(musterloesungField);*/
 
-            exercisePane.add(vbox, 0, row);
+            exercisePane.add(aufgabeUI, 0, row);
             row++;
         }
     }
