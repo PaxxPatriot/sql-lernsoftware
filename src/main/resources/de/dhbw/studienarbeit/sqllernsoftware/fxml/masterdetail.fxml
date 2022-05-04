@@ -11,7 +11,7 @@
             fx:controller="de.dhbw.studienarbeit.sqllernsoftware.frontend.controller.MasterdetailController"
             fx:id="masterdetailanchor">
 
-    <ListView fx:id="listView" onMouseClicked="#clickedListElement"/>
+    <ListView fx:id="listView" onMouseClicked="#clickedListElement" visible="false"/>
     <fx:include source="basicdetailpage.fxml" fx:id="basicdetailpage"/>
 
 </AnchorPane>

@@ -18,10 +18,9 @@ public class MainController {
     private List<Aufgabenkollektion> exercisecollectionList;
 
     @FXML
-    private Menu lectureMenu;
+    private Menu lectureMenu, exerciseMenu, testMenu;
 
-    @FXML
-    private Menu exerciseMenu;
+
 
     @FXML
     private MasterdetailController masterdetailController;
@@ -54,12 +53,26 @@ public class MainController {
         });
         lectureMenu.setGraphic(lectureMenuLabel);
 
+        Label testMenuLabel = new Label("Prüfung");
+        testMenuLabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try {
+                    gotoTest();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+        });
+        testMenu.setGraphic(testMenuLabel);
+
     }
 
     public void gotoExercise() throws IOException {
         exercisecollectionList = appdataController.getAllAufgabenkollektion();
         masterdetailController.clearDetailpage();
         masterdetailController.getListView().refresh();
+        masterdetailController.getListView().setVisible(true);
         masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) exercisecollectionList);
     }
 
@@ -67,7 +80,14 @@ public class MainController {
         lectureList = appdataController.getAllLektion();
         masterdetailController.clearDetailpage();
         masterdetailController.getListView().refresh();
+        masterdetailController.getListView().setVisible(true);
         masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) lectureList);
+    }
+
+    public void gotoTest() throws IOException {
+        masterdetailController.clearDetailpage();
+        masterdetailController.getListView().setVisible(false);
+        masterdetailController.buildTest();
     }
 
 

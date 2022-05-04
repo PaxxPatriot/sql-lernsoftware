@@ -62,19 +62,9 @@ public class AufgabeUI extends VBox {
         buttonPruefen.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-
-                statusIcon.getResultLabel().setText("Checking answer. Please wait.");
+                statusIcon.getResultLabel().setText("Antwort wird überprüft. Bitte warten.");
                 delay(() -> statusIcon.statusLoading(), aufgabe, inputfield, statusIcon, buttonPruefen, buttonMusterloesung);
-
-                /*KommentarAusgabeText ergebnisKommentar = entityUtils.getKommentarText(aufgabe, inputfield.getText());
-                if (ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.M) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.E)) {
-                    statusIcon.statusCorrect();
-                } else if (ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.ERROR) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.C) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.F) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.Z) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.L)) {
-                    statusIcon.statusWrong();
-                }
-                buttonPruefen.getStatusIcon().getResultLabel().setText(ergebnisKommentar.getOutput());*/
                 buttonMusterloesung.setVisible(true);
-
             }
         });
 
@@ -106,7 +96,6 @@ public class AufgabeUI extends VBox {
             protected Void call() throws Exception {
                 try {
                     firstTask.run();
-                    statusIcon.getResultLabel().setText("Checking answer. Please wait.");
                     KommentarAusgabeText ergebnisKommentar = entityUtils.getKommentarText(aufgabe, inputfield.getText());
                     if (ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.M) || ergebnisKommentar.getKommentarType().equals(ErgebnisKommentarType.E)) {
                         statusIcon.statusCorrect();
@@ -121,10 +110,5 @@ public class AufgabeUI extends VBox {
         };
         sleeper.setOnSucceeded(event -> buttonPruefen.getStatusIcon().getResultLabel().setText(entityUtils.getKommentarText(aufgabe, inputfield.getText()).getOutput()));
         new Thread(sleeper).start();
-    }
-
-    public void setOutPutAndVisibleMusterloesung(StatusButton buttonPruefen, Button buttonMusterloesung, KommentarAusgabeText ergebnisKommentar) {
-        buttonPruefen.getStatusIcon().getResultLabel().setText(ergebnisKommentar.getOutput());
-        buttonMusterloesung.setVisible(true);
     }
 }

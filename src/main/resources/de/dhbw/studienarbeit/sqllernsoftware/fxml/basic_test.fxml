@@ -10,9 +10,6 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:id="scrollPane">
 
-        <GridPane fx:id="exercisePane">
-            <Label fx:id="title" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <Label fx:id="description" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-        </GridPane>
+    <GridPane fx:id="testPane"/>
 
 </ScrollPane>
