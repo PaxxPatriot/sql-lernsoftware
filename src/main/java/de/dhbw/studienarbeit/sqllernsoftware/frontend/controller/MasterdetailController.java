@@ -26,6 +26,7 @@ public class MasterdetailController {
 
     private List<ObjektMitId> objektMitIdList;
     private List<ObjektMitId> backUpobjektMitIdList;
+    private MainController mainController;
 
 
     @FXML
@@ -68,6 +69,7 @@ public class MasterdetailController {
     }
 
     public void buildTest() throws IOException {
+        basicdetailpageController.setMainController(mainController);
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationAlert.setTitle("Prüfung starten");
         confirmationAlert.setHeaderText("Prüfung starten");
@@ -81,6 +83,7 @@ public class MasterdetailController {
     }
 
     public void setObjektMitIdList(List<ObjektMitId> objektMitIdList) throws FileNotFoundException {
+        basicdetailpageController.setMainController(mainController);
         this.objektMitIdList = objektMitIdList;
         this.backUpobjektMitIdList = new ArrayList<>(objektMitIdList);
         ObservableList<ObjektMitId> observableList = FXCollections.observableList(this.objektMitIdList);
@@ -125,4 +128,7 @@ public class MasterdetailController {
         return this.objektMitIdList;
     }
 
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
 }

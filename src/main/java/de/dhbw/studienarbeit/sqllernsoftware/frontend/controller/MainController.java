@@ -11,28 +11,49 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 public class MainController {
     private final AppdataController appdataController = new AppdataController();
     private List<Lektion> lectureList;
     private List<Aufgabenkollektion> exercisecollectionList;
+    private Boolean inTest;
+    private Alert confAlert;
 
     @FXML
     private Menu lectureMenu, exerciseMenu, testMenu;
-
-
 
     @FXML
     private MasterdetailController masterdetailController;
 
     @FXML
     public void initialize() throws IOException {
+        inTest = false;
+        masterdetailController.setMainController(this);
+        confAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confAlert.setTitle("Prüfung wird abgebrochen");
+        confAlert.setHeaderText("Prüfung wird abgebrochen");
+        confAlert.setContentText("Achtung: Die laufende Prüfung wurde noch nicht beendet. " +
+                "Wenn Sie bestätigen wird die Prüfung abgebrochen und eine Auswertung kann nicht stattfinden.");
+
+
         Label exerciseMenuLabel = new Label("Übungen");
         exerciseMenuLabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 try {
-                    gotoExercise();
+                    if(inTest) {
+                        Optional<ButtonType> result = confAlert.showAndWait();
+                        if (result.get() == ButtonType.OK) {
+                            gotoExercise();
+                            inTest = false;
+                        } else {
+                            confAlert.close();
+                        }
+                    } else {
+                        gotoExercise();
+                    }
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -45,7 +66,17 @@ public class MainController {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 try {
-                    gotoLecture();
+                    if(inTest) {
+                        Optional<ButtonType> result = confAlert.showAndWait();
+                        if (result.get() == ButtonType.OK) {
+                            gotoLecture();
+                            inTest = false;
+                        } else {
+                            confAlert.close();
+                        }
+                    } else {
+                        gotoLecture();
+                    }
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -58,7 +89,17 @@ public class MainController {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 try {
-                    gotoTest();
+                    if(inTest) {
+                        Optional<ButtonType> result = confAlert.showAndWait();
+                        if (result.get() == ButtonType.OK) {
+                            gotoTest();
+                            inTest = false;
+                        } else {
+                            confAlert.close();
+                        }
+                    } else {
+                        gotoTest();
+                    }
                 } catch (Exception e) {
                     System.out.println(e);
                 }
@@ -90,5 +131,9 @@ public class MainController {
         masterdetailController.buildTest();
     }
 
+
+    public void setInTest(Boolean inTest) {
+        this.inTest = inTest;
+    }
 
 }

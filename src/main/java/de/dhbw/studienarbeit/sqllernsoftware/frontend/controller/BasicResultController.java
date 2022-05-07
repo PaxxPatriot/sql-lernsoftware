@@ -51,6 +51,7 @@ public class BasicResultController {
             @Override
             public void handle(ActionEvent actionEvent) {
                 basicDetailpageController.clearDetailpage();
+                basicDetailpageController.mainController.setInTest(false);
             }
         });
 

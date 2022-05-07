@@ -12,6 +12,8 @@ import java.util.HashMap;
 
 public class BasicDetailpageController {
 
+    MainController mainController;
+
     @FXML
     private AnchorPane basePane;
 
@@ -52,6 +54,7 @@ public class BasicDetailpageController {
     }
 
     public void buildTestPage() throws IOException {
+        mainController.setInTest(true);
         clearDetailpage();
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("fxml/basic_test.fxml"));
         BasicTestController basicTestController = new BasicTestController();
@@ -88,5 +91,9 @@ public class BasicDetailpageController {
 
     public void clearDetailpage() {
         this.basePane.getChildren().clear();
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
 }
