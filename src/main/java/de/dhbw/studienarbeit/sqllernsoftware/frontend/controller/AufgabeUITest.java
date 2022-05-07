@@ -12,6 +12,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -26,7 +27,7 @@ public class AufgabeUITest extends VBox{
     static EntityUtils entityUtils;
     HashMap<Aufgabe, String> answerMap = new HashMap<>();
 
-    public AufgabeUITest(Aufgabe aufgabe, EntityUtils entityUtils) throws FileNotFoundException {
+    public AufgabeUITest(Aufgabe aufgabe, EntityUtils entityUtils, ScrollPane scrollPane) throws FileNotFoundException {
         this.aufgabe = aufgabe;
         this.entityUtils = entityUtils;
         answerMap.put(aufgabe, "");
@@ -40,12 +41,18 @@ public class AufgabeUITest extends VBox{
         this.setPadding(new Insets(10));
         this.setSpacing(10);
         this.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(.0), new Insets(5.0))));
+        this.prefWidthProperty().bind(scrollPane.widthProperty());
+
+
         Text title = new Text(aufgabe.getTitel());
+        title.setWrappingWidth(700.0);
         this.getChildren().add(title);
         Text exerciseText = new Text(aufgabe.getAufgabentext());
+        exerciseText.setWrappingWidth(700.0);
         this.getChildren().add(exerciseText);
 
         TextField inputfield = new TextField();
+        inputfield.setMaxWidth(700.0);
         this.getChildren().add(inputfield);
 
 

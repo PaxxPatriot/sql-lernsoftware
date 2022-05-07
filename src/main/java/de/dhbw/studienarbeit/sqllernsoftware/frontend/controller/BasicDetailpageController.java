@@ -4,6 +4,7 @@ import de.dhbw.studienarbeit.sqllernsoftware.HelloApplication;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;

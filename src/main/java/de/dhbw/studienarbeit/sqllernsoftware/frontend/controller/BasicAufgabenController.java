@@ -35,6 +35,7 @@ public class BasicAufgabenController {
     public void build() throws FileNotFoundException {
         title.setText(aufgabenkollektion.getTitel());
         description.setText(aufgabenkollektion.getBeschreibung()+"\n");
+        scrollPane.setFitToWidth(true);
 
         AnchorPane.setTopAnchor(scrollPane, 5.0);
         AnchorPane.setRightAnchor(scrollPane, 5.0);
@@ -43,7 +44,7 @@ public class BasicAufgabenController {
         Integer row = 2;
 
         for (Aufgabe aufgabe : aufgabenkollektion.getAufgabenliste()) {
-            AufgabeUI aufgabeUI = new AufgabeUI(aufgabe, entityUtils);
+            AufgabeUI aufgabeUI = new AufgabeUI(aufgabe, entityUtils, scrollPane);
             exercisePane.add(aufgabeUI, 0, row);
             row++;
         }
