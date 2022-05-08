@@ -46,7 +46,6 @@ public class BasicResultController {
         int score = 0;
         int row = 1;
         for (Map.Entry<Aufgabe, HashMap> entry : results.entrySet()) {
-            System.out.println(entry);
             AufgabeUIResult aufgabeUIResult = new AufgabeUIResult(entry, scrollPane);
             resultPane.add(aufgabeUIResult, 0, row);
             row++;
@@ -55,7 +54,7 @@ public class BasicResultController {
                 System.out.println(score);
             }
         }
-        System.out.println(score);
+
 
         StatusIcon statusIcon = new StatusIcon(new Label());
         if (score < 5) {
