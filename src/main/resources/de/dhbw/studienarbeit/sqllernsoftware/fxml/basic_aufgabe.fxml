@@ -6,11 +6,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane xmlns="http://javafx.com/javafx"
+<ScrollPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:id="exercisePane">
+            fx:id="scrollPane">
 
-    <Label fx:id="title" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-    <Label fx:id="description" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <GridPane fx:id="exercisePane">
+            <Label fx:id="title" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label fx:id="description" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        </GridPane>
 
-</GridPane>
+</ScrollPane>

@@ -6,9 +6,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<ScrollPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="de.dhbw.studienarbeit.sqllernsoftware.frontend.controller.BasicDetailpageController"
-            fx:id="basePane">
+            fx:id="scrollPane">
 
-</AnchorPane>
+    <GridPane fx:id="testPane"/>
+
+</ScrollPane>

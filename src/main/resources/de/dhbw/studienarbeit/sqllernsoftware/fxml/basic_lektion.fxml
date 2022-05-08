@@ -3,13 +3,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.text.TextFlow?>
-
 <?import javafx.scene.web.WebView?>
-<GridPane xmlns="http://javafx.com/javafx"
+<ScrollPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:id="lecturePane">
     <Label fx:id="title" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-    <TextFlow fx:id="textFlow" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <WebView fx:id="webView" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-</GridPane>
+    <WebView fx:id="webView" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+</ScrollPane>
