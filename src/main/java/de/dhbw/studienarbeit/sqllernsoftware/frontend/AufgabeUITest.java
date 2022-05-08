@@ -1,4 +1,4 @@
-package de.dhbw.studienarbeit.sqllernsoftware.frontend.controller;
+package de.dhbw.studienarbeit.sqllernsoftware.frontend;
 
 import de.dhbw.studienarbeit.sqllernsoftware.backend.enums.ErgebnisKommentarType;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.EntityUtils;

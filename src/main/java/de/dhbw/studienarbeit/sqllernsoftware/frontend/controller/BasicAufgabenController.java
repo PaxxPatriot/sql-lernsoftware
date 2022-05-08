@@ -5,8 +5,11 @@ import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
 import de.dhbw.studienarbeit.sqllernsoftware.frontend.AufgabeUI;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+
 import java.io.FileNotFoundException;
 
 
@@ -34,7 +37,10 @@ public class BasicAufgabenController {
 
     public void build() throws FileNotFoundException {
         title.setText(aufgabenkollektion.getTitel());
+        title.setFont(new Font(24.0));
+        title.setPadding(new Insets(5));
         description.setText(aufgabenkollektion.getBeschreibung()+"\n");
+        description.setPadding(new Insets(5));
         scrollPane.setFitToWidth(true);
 
         AnchorPane.setTopAnchor(scrollPane, 5.0);

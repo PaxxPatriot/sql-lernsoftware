@@ -5,6 +5,7 @@ import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.EntityUtils;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.manager.KommentarAusgabeText;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe;
 import de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion;
+import de.dhbw.studienarbeit.sqllernsoftware.frontend.AufgabeUITest;
 import de.dhbw.studienarbeit.sqllernsoftware.persistence.AppdataController;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -13,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
