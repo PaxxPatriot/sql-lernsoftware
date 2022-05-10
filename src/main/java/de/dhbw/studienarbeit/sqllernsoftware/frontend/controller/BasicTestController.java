@@ -38,6 +38,10 @@ public class BasicTestController {
 
     public void build() throws FileNotFoundException {
         infoAlert = new Alert(Alert.AlertType.INFORMATION);
+        infoAlert.setTitle("Bitte warten");
+        infoAlert.setHeaderText("Prüfung wird ausgewertet");
+        infoAlert.setContentText("Die von ihnen gegebenen Antworten werden überprüft und das Ergebnis in Kürze ausgegeben. Bitte geduldigen Sie sich kurz.");
+
         testPane.setPadding(new Insets(10));
         AnchorPane.setTopAnchor(scrollPane, 5.0);
         AnchorPane.setRightAnchor(scrollPane, 5.0);
@@ -85,8 +89,11 @@ public class BasicTestController {
                 confirmationAlert.setContentText("Mit Bestätigung wird die Prüfung beendet und ausgewertet. Es können keine weiteren Antworten mehr abgegeben werden.");
                 Optional<ButtonType> result = confirmationAlert.showAndWait();
                 if (result.get() == ButtonType.OK) {
-                    //scoreTest();
-                    delay(() -> startScoring());
+                    try {
+                        delay(startScoring());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     confirmationAlert.close();
                 }
@@ -97,20 +104,12 @@ public class BasicTestController {
 
     }
 
-    public Runnable startScoring() {
-        infoAlert.setTitle("Bitte warten");
-        infoAlert.setHeaderText("Prüfung wird ausgewertet");
-        infoAlert.setContentText("Die von ihnen gegebenen Antworten werden überprüft und das Ergebnis in Kürze ausgegeben. Bitte geduldigen Sie sich kurz.");
+    public Runnable startScoring() throws InterruptedException {
         infoAlert.show();
         return null;
     }
 
     public void scoreTest() throws IOException {
-        infoAlert.setTitle("Bitte warten");
-        infoAlert.setHeaderText("Prüfung wird ausgewertet");
-        infoAlert.setContentText("Die von ihnen gegebenen Antworten werden überprüft und das Ergebnis in Kürze ausgegeben. Bitte geduldigen Sie sich kurz.");
-        infoAlert.show();
-
         HashMap<Aufgabe, HashMap> results = new HashMap<>();
         HashMap<Aufgabe, String> answerList = new HashMap<>();
         for (AufgabeUITest aufgabeUITest : aufgabeUITestList) {
@@ -159,7 +158,8 @@ public class BasicTestController {
         sleeper.setOnSucceeded(event -> {
             try {
                 scoreTest();
-            } catch (IOException e) {
+            } catch (Exception e) {
+
                 e.printStackTrace();
             }
         });
