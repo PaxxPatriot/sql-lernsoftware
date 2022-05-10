@@ -159,6 +159,7 @@ public class BasicTestController {
             try {
                 scoreTest();
             } catch (Exception e) {
+
                 e.printStackTrace();
             }
         });

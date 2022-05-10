@@ -98,7 +98,6 @@ public class AufgabeUI extends VBox {
         this.getChildren().add(musterloesungField);
     }
 
-
     public static void delay(Runnable firstTask, Aufgabe aufgabe, TextField inputfield, StatusIcon statusIcon, StatusButton buttonPruefen, Button buttonMusterloesung) {
         Task<Void> sleeper = new Task<Void>() {
             @Override
