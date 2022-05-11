@@ -27,7 +27,7 @@ public class DatenbasisController implements Datenbasis {
         }
     }
 
-    public DBErgebnisTranskript[] executeAbfrageUndMusterloesung(Aufgabentyp aufgabentyp, String userQuery, String loesungQuery, String pruefungsQuery, String datenbankPfad) {
+    public DBErgebnisTranskript[] executeAbfrageUndMusterloesung(Aufgabentyp aufgabentyp, String userQuery, String loesungQuery, String pruefungsQuery, String datenbankPfad) throws SQLException {
         DBErgebnisTranskript[] abfrageUndLoesung = new DBErgebnisTranskript[2];
         String url = String.format("jdbc:sqlite:%s", datenbankPfad);
         switch (aufgabentyp) {
@@ -35,10 +35,12 @@ public class DatenbasisController implements Datenbasis {
                 try {
                     abfrageUndLoesung[0] = executeQueryOnDatabase(userQuery, url);
                     abfrageUndLoesung[1] = executeQueryOnDatabase(loesungQuery, url);
-                    return abfrageUndLoesung;
+                    //return abfrageUndLoesung;
                 } catch (SQLException e) {
                     logger.warning(e.getMessage());
+                    throw e;
                 }
+                return abfrageUndLoesung;
             }
             case C, D, U -> {
                 String url_user = copyDatenbasis();
@@ -48,14 +50,16 @@ public class DatenbasisController implements Datenbasis {
                     executeUpdateOnDatabase(loesungQuery, url_muster);
                     abfrageUndLoesung[0] = executeQueryOnDatabase(pruefungsQuery, url_user);
                     abfrageUndLoesung[1] = executeQueryOnDatabase(pruefungsQuery, url_muster);
-                    return abfrageUndLoesung;
+                    //return abfrageUndLoesung;
                 } catch (SQLException e) {
                     logger.warning(e.getMessage());
+                    throw e;
                 } finally {
                     // Delete temporary copies of Datenbasis
                     new File(url_user.substring(12)).delete();
                     new File(url_muster.substring(12)).delete();
                 }
+                return abfrageUndLoesung;
             }
         }
         return null;

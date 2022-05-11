@@ -55,8 +55,10 @@ public class DBErgebnisKommentarTests {
 	public void testDBErgebnisKommentarTypeL(){
 		String userInput = "";
 		Aufgabe aufgabe = createMockAufgabe(userInput);
+
 		
 		DBErgebnisKommentar kommentar = new DBErgebnisKommentar(null, null, aufgabe, userInput);
+
 		KommentarAusgabeText kommentarAusgabe = kommentar.getKommentar();
 		assertEquals(kommentar.getKommentarType(), ErgebnisKommentarType.L);
 		assertEquals(kommentarAusgabe.getOutput(),ErgebnisKommentarType.L.anzeigeText());

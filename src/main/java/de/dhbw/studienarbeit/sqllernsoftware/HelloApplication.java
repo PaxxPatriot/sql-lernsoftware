@@ -15,21 +15,15 @@ import java.util.List;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/startpage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setTitle("SQL-Lernsoftware");
         stage.setScene(scene);
         stage.show();
     }
 
     public static void main(String[] args) {
         AppdataController appdataController = new AppdataController();
-        List<Aufgabenkollektion> aufgabenkollektion = appdataController.getAllAufgabenkollektion();
-        System.out.println(aufgabenkollektion.get(0).getId());
-        Aufgabe aufgabe = aufgabenkollektion.get(0).getAufgabe(1);
-        System.out.println(aufgabe.getAufgabentext());
-        EntityUtils entityUtils = new EntityUtils();
-        System.out.println(entityUtils.getKommentarText(aufgabe, "DELETE FROM Professoren WHERE id = 5588;").getOutput());
         launch();
     }
 }

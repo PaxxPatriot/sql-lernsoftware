@@ -14,12 +14,25 @@ public class LektionsInhaltAufgabe extends LektionsInhalt {
 	private String frage;
 	@Column(name = "antwort")
 	private String antwort;
-	
+
+	public LektionsInhaltAufgabe() {
+	}
+
 	public LektionsInhaltAufgabe(String id, Lektion lektion, int reihenfolge, String frage,
 								 String antwort) {
 		super(id, Inhaltstyp.B, lektion, reihenfolge);
 		this.frage = frage;
 		this.antwort = antwort;
+	}
+
+	@Override
+	public String getUITitel() {
+		return this.frage;
+	}
+
+	@Override
+	public String getUIBeschreibung() {
+		return this.antwort;
 	}
 
 	public String getFrage() {

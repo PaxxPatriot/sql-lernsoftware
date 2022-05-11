@@ -15,7 +15,10 @@ public abstract class LektionsInhalt extends ObjektMitId {
 	private Lektion lektion;
 	@Column(name = "reihenfolge")
 	private int reihenfolge;
-	
+
+	protected LektionsInhalt() {
+	}
+
 	public LektionsInhalt(String id, Inhaltstyp typ, Lektion lektion, int reihenfolge) {
 		super(id);
 		this.typ = typ;
@@ -37,6 +40,7 @@ public abstract class LektionsInhalt extends ObjektMitId {
 	public String getText() {
 		return "";
 	}
+
 
 	
 }

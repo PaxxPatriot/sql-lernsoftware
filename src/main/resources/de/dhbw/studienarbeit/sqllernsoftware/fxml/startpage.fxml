@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+
+<VBox fx:id="root" id="vBoxBase" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="de.dhbw.studienarbeit.sqllernsoftware.frontend.controller.MainController">
+    <MenuBar fx:id="menuBar">
+            <Menu fx:id="lectureMenu"/>
+            <Menu fx:id="exerciseMenu"/>
+            <Menu fx:id="testMenu"/>
+    </MenuBar>
+    <fx:include source="masterdetail.fxml" fx:id="masterdetail"/>
+</VBox>

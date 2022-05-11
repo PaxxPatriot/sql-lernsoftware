@@ -20,7 +20,7 @@ import org.junit.jupiter.api.Test;
 
 public class EntityUtilsTests {
 	@Test
-	void testGetDBKommentar() {
+	void testGetDBKommentar() throws SQLException {
 		Datenbasis datenbasisController = EasyMock.createMock(Datenbasis.class);
 		Aufgabenkollektion aufgabenkollektion = new Aufgabenkollektion("f6f6b4e8-37e2-4fbe-9756-5f3aaadeba1b",
 				"Aufgabenkollektion 1", "Beschreibung", "data/hochschule.db");
