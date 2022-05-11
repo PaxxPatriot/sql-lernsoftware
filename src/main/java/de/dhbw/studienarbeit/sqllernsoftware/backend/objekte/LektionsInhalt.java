@@ -37,6 +37,9 @@ public abstract class LektionsInhalt extends ObjektMitId {
 	public int getReihenfolge() {
 		return reihenfolge;
 	}
+	public String getText() {
+		return "";
+	}
 
 
 	
