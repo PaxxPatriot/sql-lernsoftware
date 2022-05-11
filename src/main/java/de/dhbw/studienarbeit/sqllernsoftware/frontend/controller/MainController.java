@@ -115,6 +115,7 @@ public class MainController {
         masterdetailController.clearDetailpage();
         masterdetailController.getListView().refresh();
         masterdetailController.getListView().setVisible(true);
+        exercisecollectionList.add(new Aufgabenkollektion());
         masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) exercisecollectionList);
     }
 
@@ -123,6 +124,7 @@ public class MainController {
         masterdetailController.clearDetailpage();
         masterdetailController.getListView().refresh();
         masterdetailController.getListView().setVisible(true);
+        lectureList.add(new Lektion());
         masterdetailController.setObjektMitIdList((List<ObjektMitId>) (List<?>) lectureList);
     }
 

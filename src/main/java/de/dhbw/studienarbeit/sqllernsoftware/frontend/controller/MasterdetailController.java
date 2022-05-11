@@ -86,6 +86,7 @@ public class MasterdetailController {
         basicdetailpageController.setMainController(mainController);
         this.objektMitIdList = objektMitIdList;
         this.backUpobjektMitIdList = new ArrayList<>(objektMitIdList);
+        System.out.println(objektMitIdList);
         ObservableList<ObjektMitId> observableList = FXCollections.observableList(this.objektMitIdList);
         listView.setCellFactory(new ObjectCellFactory());
         listView.setItems(observableList);
@@ -101,16 +102,18 @@ public class MasterdetailController {
         listView.getItems().retainAll(backUpobjektMitIdList);
         Integer index = listView.getItems().indexOf(lektion);
         List<LektionsInhalt> lektionsInhaltList = lektion.getInhalte();
+        System.out.println(lektionsInhaltList);
 
         try {
-            if (!listView.getItems().get(index + 1).equals(lektionsInhaltList.get(0))) {
-                listView.getItems().addAll(index + 1, lektionsInhaltList);
+            if (!listView.getItems().get(index+1).equals(lektionsInhaltList.get(0))) {
+                listView.getItems().addAll(index+1, lektionsInhaltList);
+                System.out.println(index+1);
             } else {
                 //System.out.println("Already open!");
             }
 
         } catch (Exception e) {
-            //System.out.println(e);
+            System.out.println(e);
             //System.out.println("Lektion hat keine Inhalte");
         }
 

@@ -31,8 +31,14 @@ public class ObjectCellFactory implements Callback<ListView<ObjektMitId>, ListCe
                 if (empty || objektMitId == null) {
                     setText(null);
                     setGraphic(null);
-                } else {
+                } else if (objektMitId.getUITitel() == null){
+                    setText(null);
+                    setGraphic(null);
+                    setOnMouseClicked((MouseEvent event) -> {
+                            event.consume();
+                    });
 
+                } else {
                     if (objektMitId instanceof LektionsInhalt) {
                         setText("\t"+objektMitId.getUITitel());
                     } else {
