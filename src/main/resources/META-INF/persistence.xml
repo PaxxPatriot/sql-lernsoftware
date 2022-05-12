@@ -3,11 +3,9 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
     <persistence-unit name="de.dhbw.studienarbeit.sqllernsoftware.appdata" transaction-type="RESOURCE_LOCAL">
-        <description>Hibernate EntityManager Demo</description>
+        <description>Hibernate EntityManager</description>
         <class>de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabe</class>
         <class>de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Aufgabenkollektion</class>
-        <class>de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Backend</class>
-        <class>de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Datenbank</class>
         <class>de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.Lektion</class>
         <class>de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.LektionsInhaltAufgabe</class>
         <class>de.dhbw.studienarbeit.sqllernsoftware.backend.objekte.LektionsInhaltText</class>
