@@ -18,8 +18,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.io.FileNotFoundException;
+import java.util.logging.Logger;
 
 public class AufgabeUI extends VBox {
+    private static final Logger logger = Logger.getLogger("de.dhbw.studienarbeit.sqllernsoftware.frontend.AufgabeUI");
 
     Aufgabe aufgabe;
     static EntityUtils entityUtils;
@@ -111,7 +113,7 @@ public class AufgabeUI extends VBox {
                         statusIcon.statusWrong();
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    logger.warning(e.getMessage());
                 }
                 return null;
             }

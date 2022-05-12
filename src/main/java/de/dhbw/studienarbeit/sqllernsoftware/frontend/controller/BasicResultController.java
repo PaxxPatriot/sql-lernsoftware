@@ -51,7 +51,7 @@ public class BasicResultController {
             row++;
             if (entry.getValue().get("correct").equals("true")) {
                 score++;
-                System.out.println(score);
+                //System.out.println(score);
             }
         }
 

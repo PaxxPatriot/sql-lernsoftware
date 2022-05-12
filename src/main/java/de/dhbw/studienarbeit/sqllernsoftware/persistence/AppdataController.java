@@ -18,21 +18,9 @@ public class AppdataController {
         return emf.createEntityManager();
     }
 
-    public Lektion getLektionById(Long id) {
-        TypedQuery<Lektion> jpqlQuery = getEntityManager().createQuery("SELECT l FROM Lektion l WHERE l.id=:id", Lektion.class);
-        jpqlQuery.setParameter("id", id);
-        return jpqlQuery.getSingleResult();
-    }
-
     public List<Lektion> getAllLektion() {
         TypedQuery<Lektion> jpqlQuery = getEntityManager().createQuery("SELECT l FROM Lektion l", Lektion.class);
         return jpqlQuery.getResultList();
-    }
-
-    public Aufgabenkollektion getAufgabenkollektionById(String id) {
-        TypedQuery<Aufgabenkollektion> jpqlQuery = getEntityManager().createQuery("SELECT a FROM Aufgabenkollektion a WHERE a.id=:id", Aufgabenkollektion.class);
-        jpqlQuery.setParameter("id", id);
-        return jpqlQuery.getSingleResult();
     }
 
     public List<Aufgabenkollektion> getAllAufgabenkollektion() {

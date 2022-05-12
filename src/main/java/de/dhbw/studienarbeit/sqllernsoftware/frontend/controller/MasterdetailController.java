@@ -21,8 +21,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 public class MasterdetailController {
+    private static final Logger logger = Logger.getLogger("de.dhbw.studienarbeit.sqllernsoftware.frontend.controller.MasterdetailController");
 
     private List<ObjektMitId> objektMitIdList;
     private List<ObjektMitId> backUpobjektMitIdList;
@@ -86,7 +88,6 @@ public class MasterdetailController {
         basicdetailpageController.setMainController(mainController);
         this.objektMitIdList = objektMitIdList;
         this.backUpobjektMitIdList = new ArrayList<>(objektMitIdList);
-        System.out.println(objektMitIdList);
         ObservableList<ObjektMitId> observableList = FXCollections.observableList(this.objektMitIdList);
         listView.setCellFactory(new ObjectCellFactory());
         listView.setItems(observableList);
@@ -102,18 +103,16 @@ public class MasterdetailController {
         listView.getItems().retainAll(backUpobjektMitIdList);
         Integer index = listView.getItems().indexOf(lektion);
         List<LektionsInhalt> lektionsInhaltList = lektion.getInhalte();
-        System.out.println(lektionsInhaltList);
 
         try {
             if (!listView.getItems().get(index+1).equals(lektionsInhaltList.get(0))) {
                 listView.getItems().addAll(index+1, lektionsInhaltList);
-                System.out.println(index+1);
             } else {
                 //System.out.println("Already open!");
             }
 
         } catch (Exception e) {
-            System.out.println(e);
+            logger.warning(e.getMessage());
             //System.out.println("Lektion hat keine Inhalte");
         }
 

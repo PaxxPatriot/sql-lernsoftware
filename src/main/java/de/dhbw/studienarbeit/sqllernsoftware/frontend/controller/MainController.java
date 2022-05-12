@@ -14,8 +14,10 @@ import java.util.List;
 import java.util.Optional;
 
 import java.util.OptionalInt;
+import java.util.logging.Logger;
 
 public class MainController {
+    private static final Logger logger = Logger.getLogger("de.dhbw.studienarbeit.sqllernsoftware.frontend.controller.MainController");
     private final AppdataController appdataController = new AppdataController();
     private List<Lektion> lectureList;
     private List<Aufgabenkollektion> exercisecollectionList;
@@ -102,7 +104,7 @@ public class MainController {
                         gotoTest();
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    logger.warning(e.getMessage());
                 }
             }
         });
